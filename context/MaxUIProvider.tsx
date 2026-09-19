@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useTheme } from "next-themes";
+import { useTheme } from "@teispace/next-themes";
 
 const MaxUI = dynamic(() => import("@maxhub/max-ui").then((mod) => mod.MaxUI), { ssr: false });
 

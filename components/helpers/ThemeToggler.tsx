@@ -1,6 +1,6 @@
 import { Button } from "@maxhub/max-ui";
 import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { useTheme } from "@teispace/next-themes";
 
 const style = "size-5 text-volen-800 dark:text-volen-200"
 

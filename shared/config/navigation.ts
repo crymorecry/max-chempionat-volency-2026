@@ -1,8 +1,8 @@
-import { HomeIcon, MessageSquareShareIcon, PhoneCallIcon, BuildingComplexIcon} from 'lucide-react'
+import { HomeIcon, MessageSquareShareIcon, PhoneCallIcon, NewspaperIcon} from 'lucide-react'
 
 export const USER_NAV_LINKS = [
-      { icon: HomeIcon, title: 'main', href: '/' },
+      { icon: HomeIcon, title: 'main', href: '/main' },
       { icon: MessageSquareShareIcon, title: 'appeals', href: '/appeals' },
-      { icon: BuildingComplexIcon, title: 'house', href: '/house' },
+      { icon: NewspaperIcon, title: 'news', href: '/news' },
       { icon: PhoneCallIcon, title: 'contact', href: '/contact' },
 ] as const

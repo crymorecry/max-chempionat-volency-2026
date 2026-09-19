@@ -1,8 +1,12 @@
 {
+    "init": {
+        "loading": "Loading application",
+        "error": "Error loading application"
+    },
     "navigation": {
         "main": "Home",
         "appeals": "Appeals",
-        "house": "House",
+        "news": "News",
         "contact": "Contact"
     },
     "home": {

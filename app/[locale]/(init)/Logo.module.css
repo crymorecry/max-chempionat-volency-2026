@@ -1,0 +1,46 @@
+.logo {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+  
+  .logo img {
+    display: block;
+  }
+  
+  .logo::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 40%;
+    height: 200%;
+  
+    background: linear-gradient(
+      120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.15) 30%,
+      rgba(255, 255, 255, 0.9) 50%,
+      rgba(255, 255, 255, 0.15) 70%,
+      transparent 100%
+    );
+  
+    transform: rotate(15deg);
+    animation: shine 2.2s linear infinite;
+    pointer-events: none;
+  }
+  
+
+  @keyframes shine {
+    0% {
+      left: -80%;
+    }
+  
+    90% {
+      left: 140%;
+    }
+  
+    100% {
+      left: 140%;
+    }
+  }
