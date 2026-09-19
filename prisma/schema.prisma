@@ -1,198 +1,199 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-model User {
-  id        String   @id @default(cuid())
-  email     String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  
-  businesses      Business[]
-  chatMessages    ChatMessage[]
-  authTokens      AuthToken[]
-  transactions    Transaction[]
-  payments        Payment[]
-  tasks           Task[]
-  reminders       Reminder[]
-}
-
-model Business {
-  id            String   @id @default(cuid())
-  userId        String
-  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  name          String
-  ip            String?
-  address       String?
-  yandexMapLink String?
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  
-  employees         Employee[]
-  transactions      Transaction[]
-  payments          Payment[]
-  tasks             Task[]
-  reminders         Reminder[]
-  recurringExpenses RecurringExpense[]
-  
-  @@index([userId])
-}
-
-model Employee {
-  id          String   @id @default(cuid())
-  businessId  String
-  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  name        String
-  email       String?
-  phone       String?
-  position    String?
-  dailyRate   Float
-  workSchedule String  @default("5/2")
-  notes       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  days        EmployeeDay[]
-
-  @@index([businessId])
-}
-
-model EmployeeDay {
-  id          String   @id @default(cuid())
-  employeeId  String
-  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
-  date        DateTime
-  type        String
-  notes       String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@unique([employeeId, date])
-  @@index([employeeId])
-  @@index([date])
-}
-
-model ChatMessage {
-  id        String   @id @default(cuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  role      String
-  content   String
-  createdAt DateTime @default(now())
-
-  @@index([userId])
-  @@index([createdAt])
-}
-
-model AuthToken {
-  id        String   @id @default(cuid())
-  email     String
-  code      String
-  token     String?  @unique
-  userId    String?
-  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  expiresAt DateTime
-  createdAt DateTime @default(now())
-  verified  Boolean  @default(false)
-  
-  @@index([email])
-  @@index([token])
-  @@index([code])
-}
-
-model Transaction {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  businessId  String
-  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  date        DateTime
-  category    String
-  type        String
-  amount      Float
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([userId])
-  @@index([businessId])
-  @@index([date])
-  @@index([category])
-}
-
-model Payment {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  businessId  String
-  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  date        DateTime
-  contractor  String
-  description String
-  amount      Float
-  status      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([userId])
-  @@index([businessId])
-  @@index([date])
-  @@index([status])
-}
-
-model Task {
-  id        String   @id @default(cuid())
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  businessId String
-  business  Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  title     String
-  priority  String
-  deadline  DateTime
-  status    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([userId])
-  @@index([businessId])
-  @@index([status])
-  @@index([deadline])
-}
-
-model Reminder {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  businessId  String
-  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  title       String
-  date        DateTime
-  description String?
-  completed   Boolean  @default(false)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([userId])
-  @@index([businessId])
-  @@index([date])
-  @@index([completed])
-}
-
-
-model RecurringExpense {
-  id          String   @id @default(cuid())
-  businessId  String
-  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-  name        String
-  amount      Float
-  frequency   String
-  description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  @@index([businessId])
-}
+//generator client {
+//  provider = "prisma-client-js"
+//}
+//
+//datasource db {
+//  provider = "postgresql"
+//  url      = env("DATABASE_URL")
+//}
+//model User {
+//  id        String   @id @default(cuid())
+//  email     String   @unique
+//  createdAt DateTime @default(now())
+//  updatedAt DateTime @updatedAt
+//  
+//  businesses      Business[]
+//  chatMessages    ChatMessage[]
+//  authTokens      AuthToken[]
+//  transactions    Transaction[]
+//  payments        Payment[]
+//  tasks           Task[]
+//  reminders       Reminder[]
+//}
+//
+//model Business {
+//  id            String   @id @default(cuid())
+//  userId        String
+//  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//  name          String
+//  ip            String?
+//  address       String?
+//  yandexMapLink String?
+//  createdAt     DateTime @default(now())
+//  updatedAt     DateTime @updatedAt
+//  
+//  employees         Employee[]
+//  transactions      Transaction[]
+//  payments          Payment[]
+//  tasks             Task[]
+//  reminders         Reminder[]
+//  recurringExpenses RecurringExpense[]
+//  
+//  @@index([userId])
+//}
+//
+//model Employee {
+//  id          String   @id @default(cuid())
+//  businessId  String
+//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+//  name        String
+//  email       String?
+//  phone       String?
+//  position    String?
+//  dailyRate   Float
+//  workSchedule String  @default("5/2")
+//  notes       String?
+//  createdAt   DateTime @default(now())
+//  updatedAt   DateTime @updatedAt
+//
+//  days        EmployeeDay[]
+//
+//  @@index([businessId])
+//}
+//
+//model EmployeeDay {
+//  id          String   @id @default(cuid())
+//  employeeId  String
+//  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+//  date        DateTime
+//  type        String
+//  notes       String?
+//  createdAt   DateTime @default(now())
+//  updatedAt   DateTime @updatedAt
+//
+//  @@unique([employeeId, date])
+//  @@index([employeeId])
+//  @@index([date])
+//}
+//
+//model ChatMessage {
+//  id        String   @id @default(cuid())
+//  userId    String
+//  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//  role      String
+//  content   String
+//  createdAt DateTime @default(now())
+//
+//  @@index([userId])
+//  @@index([createdAt])
+//}
+//
+//model AuthToken {
+//  id        String   @id @default(cuid())
+//  email     String
+//  code      String
+//  token     String?  @unique
+//  userId    String?
+//  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+//  expiresAt DateTime
+//  createdAt DateTime @default(now())
+//  verified  Boolean  @default(false)
+//  
+//  @@index([email])
+//  @@index([token])
+//  @@index([code])
+//}
+//
+//model Transaction {
+//  id          String   @id @default(cuid())
+//  userId      String
+//  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//  businessId  String
+//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+//  date        DateTime
+//  category    String
+//  type        String
+//  amount      Float
+//  description String
+//  createdAt   DateTime @default(now())
+//  updatedAt   DateTime @updatedAt
+//
+//  @@index([userId])
+//  @@index([businessId])
+//  @@index([date])
+//  @@index([category])
+//}
+//
+//model Payment {
+//  id          String   @id @default(cuid())
+//  userId      String
+//  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//  businessId  String
+//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+//  date        DateTime
+//  contractor  String
+//  description String
+//  amount      Float
+//  status      String
+//  createdAt   DateTime @default(now())
+//  updatedAt   DateTime @updatedAt
+//
+//  @@index([userId])
+//  @@index([businessId])
+//  @@index([date])
+//  @@index([status])
+//}
+//
+//model Task {
+//  id        String   @id @default(cuid())
+//  userId    String
+//  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//  businessId String
+//  business  Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+//  title     String
+//  priority  String
+//  deadline  DateTime
+//  status    String
+//  createdAt DateTime @default(now())
+//  updatedAt DateTime @updatedAt
+//
+//  @@index([userId])
+//  @@index([businessId])
+//  @@index([status])
+//  @@index([deadline])
+//}
+//
+//model Reminder {
+//  id          String   @id @default(cuid())
+//  userId      String
+//  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+//  businessId  String
+//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+//  title       String
+//  date        DateTime
+//  description String?
+//  completed   Boolean  @default(false)
+//  createdAt   DateTime @default(now())
+//  updatedAt   DateTime @updatedAt
+//
+//  @@index([userId])
+//  @@index([businessId])
+//  @@index([date])
+//  @@index([completed])
+//}
+//
+//
+//model RecurringExpense {
+//  id          String   @id @default(cuid())
+//  businessId  String
+//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+//  name        String
+//  amount      Float
+//  frequency   String
+//  description String?
+//  createdAt   DateTime @default(now())
+//  updatedAt   DateTime @updatedAt
+//
+//  @@index([businessId])
+//}
+//
