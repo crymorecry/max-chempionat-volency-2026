@@ -1,0 +1,303 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Базовая палитра volen */
+  
+  --color-volen-950: oklch(0.08 0.004 286); /* #0f0f11 */
+  --color-volen-900: oklch(0.14 0.004 286);/* #2a2a2d */
+  --color-volen-800: oklch(0.19 0.004 286);/* #343438 */
+  --color-volen-700: oklch(0.27 0.004 286);/* #3f3f43 */
+  --color-volen-600: oklch(0.37 0.004 286);/* #4F4F4F */
+  --color-volen-500: oklch(0.44 0.004 286);/* #66666a */
+  --color-volen-400: oklch(0.55 0.004 286);/* #737377 */
+  --color-volen-300: oklch(0.70 0.004 286);/* #8a8a8d */
+  --color-volen-200: oklch(0.87 0.004 286);/* #BCBCBC */
+  --color-volen-100: oklch(0.93 0.004 286);/* #ededed */
+  --color-volen-50: oklch(0.967 0.004 286);/* #f7f7f7 */
+
+  --color-brand-primary: #1161EF;
+  --color-brand-primary-hover: #0d4cba;
+
+  /* Destructive палитра */
+  --color-destructive-100: oklch(0.6701 0.2172 24.43);
+  --color-destructive-200: oklch(0.6124 0.2127 25.44);
+
+  /* Document - светлая тема (по умолчанию) */
+  --color-document-background: white;
+
+  /* Alert - светлая тема (по умолчанию) */
+  --color-alert-text: var(--color-volen-600);
+  --color-alert-default-background: var(--color-volen-50);
+  --color-alert-destructive-background: var(--color-destructive-100);
+  --color-alert-success-background: #10B981;
+  --color-alert-warning-background: #F59E0B;
+  --color-alert-info-background: #3B82F6;
+
+  /* Badge - светлая тема (по умолчанию) */
+  --color-badge-background-primary: var(--color-volen-600);
+  --color-badge-text-primary: white;
+  --color-badge-background-secondary: var(--color-volen-100);
+  --color-badge-text-secondary: var(--color-volen-900);
+  --color-badge-background-destructive: var(--color-destructive-200);
+  --color-badge-text-destructive: white;
+  --color-badge-text-outline: var(--color-volen-800);
+  --color-badge-border-outline: var(--color-volen-200);
+
+  /* Text - светлая тема (по умолчанию) */
+  --color-text-primary: var(--color-volen-800);
+  --color-text-secondary: var(--color-volen-600);
+  --color-text-tertiary: var(--color-volen-400);
+
+  /* Button - светлая тема (по умолчанию) */
+  --color-button-background-primary: var(--color-brand-primary);
+  --color-button-background-primary-hover: var(--color-brand-primary-hover);
+  --color-button-text-primary: white;
+  --color-button-background-secondary: var(--color-volen-100);
+  --color-button-background-secondary-hover: var(--color-volen-200);
+  --color-button-text-secondary: var(--color-text-primary);
+  --color-button-background-ghost-hover: var(--color-volen-100);
+  --color-button-background-destructive: var(--color-destructive-200);
+  --color-button-background-destructive-hover: var(--color-destructive-100);
+  --color-button-text-destructive: white;
+  --color-button-background-ghost: transparent;
+  --color-button-text-ghost: var(--color-volen-900);
+  --color-button-background-outline: transparent;
+  --color-button-text-outline: var(--color-volen-900);
+  --color-button-border-outline: var(--color-volen-300);
+  --color-button-border-outline-hover: var(--color-volen-400);
+
+  /* Card - светлая тема (по умолчанию) */
+  --color-card-background: var(--color-volen-50);
+  --color-card-border: var(--color-volen-200);
+
+  /* Border и Input для @theme inline */
+  --color-border: var(--color-card-border);
+  --color-input: var(--color-input-border-outline);
+
+  /* Checkbox - светлая тема (по умолчанию) */
+  --color-checkbox-background: transparent;
+  --color-checkbox-background-checked: var(--color-brand-primary);
+  --color-checkbox-border: var(--color-volen-200);
+
+  /* Combobox - светлая тема (по умолчанию) */
+  --color-combobox-background: #fff;
+  --color-combobox-selected: var(--color-volen-100);
+  --color-combobox-text: var(--color-volen-800);
+  --color-combobox-placeholder: var(--color-volen-500);
+
+  /* Dialog - светлая тема (по умолчанию) */
+  --color-dialog-background: white;
+  --color-dialog-border: var(--color-volen-400);
+
+  /* Popover - светлая тема (по умолчанию) */
+  --color-popover-background: white;
+  --color-popover-text: var(--color-volen-700);
+  --color-popover-border: var(--color-volen-100);
+
+  /* Input - светлая тема (по умолчанию) */
+  --color-input-background-solid: var(--color-volen-100);
+  --color-input-background-outline: transparent;
+  --color-input-border-outline: var(--color-volen-200);
+  --color-input-text: var(--color-volen-900);
+  --color-input-placeholder: var(--color-volen-400);
+
+  /* Avatar - светлая тема (по умолчанию) */
+  --color-avatar-background: var(--color-volen-100);
+
+  /* Sheet - светлая тема (по умолчанию) */
+  --color-sheet-background: white;
+
+  /* Slider - светлая тема (по умолчанию) */
+  --color-slider-track-background: var(--color-volen-100);
+  --color-slider-range-background: var(--color-brand-primary);
+  --color-slider-thumb-background: white;
+  --color-slider-thumb-border: var(--color-brand-primary);
+  --color-slider-thumb-ring: var(--color-brand-primary);
+
+  /* Tabs - светлая тема (по умолчанию) */
+  --color-tabs-background-filled: var(--color-volen-50);
+  --color-tabs-text-filled: var(--color-text-primary);
+  --color-tabs-background-filled-active: white;
+  --color-tabs-text-filled-active: var(--color-volen-900);
+  --color-tabs-background-underline: transparent;
+  --color-tabs-text-underline: var(--color-text-primary);
+  --color-tabs-border-underline: var(--color-volen-500);
+  --color-tabs-border-underline-active: var(--color-volen-900);
+  --color-tabs-text-underline-active: var(--color-volen-900);
+
+  /* Toast - светлая тема (по умолчанию) */
+  --color-toast-background: white;
+
+  /* Tooltip - светлая тема (по умолчанию) */
+  --color-tooltip-background-primary: var(--color-volen-900);
+  --color-tooltip-text-primary: white;
+  --color-tooltip-background-secondary: white;
+  --color-tooltip-text-secondary: var(--color-text-primary);
+
+  /* Шрифты */
+  --font-family-sans: Gilroy, system-ui, -apple-system, sans-serif;
+  --font-family-primary: var(--font-family-sans);
+}
+
+/* Темная тема */
+.dark {
+
+  /* Document - темная тема */
+  background-color: var(--color-volen-900);
+
+  /* Alert - темная тема */
+  --color-alert-text: white;
+  --color-alert-default-background: var(--color-volen-600);
+  --color-alert-destructive-background: var(--color-destructive-100);
+  --color-alert-success-background: #10B981;
+  --color-alert-warning-background: #F59E0B;
+  --color-alert-info-background: #3B82F6;
+
+  /* Badge - темная тема */
+  --color-badge-background-primary: white;
+  --color-badge-text-primary: var(--color-volen-800);
+  --color-badge-background-secondary: var(--color-volen-600);
+  --color-badge-text-secondary: var(--color-volen-100);
+  --color-badge-background-destructive: var(--color-destructive-200);
+  --color-badge-text-destructive: white;
+  --color-badge-text-outline: var(--color-volen-100);
+  --color-badge-border-outline: var(--color-volen-600);
+
+  /* Text - темная тема */
+  --color-text-primary: var(--color-volen-100);
+  --color-text-secondary: var(--color-volen-300);
+  --color-text-tertiary: var(--color-volen-500);
+
+  /* Button - темная тема */
+  --color-button-background-primary: var(--color-brand-primary);
+  --color-button-text-primary: white;
+  --color-button-background-secondary: var(--color-volen-600);
+  --color-button-background-secondary-hover: var(--color-volen-700);
+  --color-button-text-secondary: var(--color-volen-100);
+  --color-button-background-destructive: var(--color-destructive-200);
+  --color-button-background-destructive-hover: var(--color-destructive-100);
+  --color-button-text-destructive: white;
+  --color-button-background-ghost: transparent;
+  --color-button-text-ghost: var(--color-volen-100);
+  --color-button-background-outline: transparent;
+  --color-button-text-outline: var(--color-volen-100);
+  --color-button-border-outline: var(--color-volen-600);
+
+  /* Card - темная тема */
+  --color-card-background: var(--color-volen-800);
+  --color-card-border: var(--color-volen-700);
+
+  /* Border и Input для @theme inline */
+  --color-border: var(--color-card-border);
+  --color-input: var(--color-input-border-outline);
+
+  /* Combobox - темная тема */
+  --color-combobox-background: var(--color-volen-800);
+  --color-combobox-selected: var(--color-volen-600);
+  --color-combobox-text: var(--color-volen-100);
+  --color-combobox-border: var(--color-volen-400);
+
+  /* Dialog - темная тема */
+  --color-dialog-background: var(--color-volen-800);
+  --color-dialog-border: var(--color-volen-600);
+
+  /* Tooltip - темная тема */
+  --color-tooltip-background-primary: white;
+  --color-tooltip-text-primary: var(--color-volen-800);
+  --color-tooltip-background-secondary: var(--color-volen-700);
+  --color-tooltip-text-secondary: var(--color-volen-100);
+
+  /* Checkbox - темная тема */
+  --color-checkbox-background: transparent;
+  --color-checkbox-background-checked: white;
+  --color-checkbox-border: var(--color-volen-400);
+
+  /* Popover - темная тема */
+  --color-popover-background: var(--color-volen-800);
+  --color-popover-text: var(--color-volen-100);
+  --color-popover-border: var(--color-volen-700);
+
+  /* Input - темная тема */
+  --color-input-background-solid: var(--color-volen-600);
+  --color-input-background-outline: transparent;
+  --color-input-border-outline: var(--color-volen-700);
+  --color-input-text: var(--color-volen-100);
+  --color-input-placeholder: var(--color-volen-300);
+
+  /* Avatar - темная тема */
+  --color-avatar-background: var(--color-volen-400);
+
+  /* Sheet - темная тема */
+  --color-sheet-background: var(--color-volen-800);
+
+  /* Tabs - темная тема */
+  --color-tabs-background-filled: var(--color-volen-600);
+  --color-tabs-text-filled: var(--color-volen-100);
+  --color-tabs-background-filled-active: var(--color-volen-400);
+  --color-tabs-text-filled-active: var(--color-volen-100);
+  --color-tabs-background-underline: transparent;
+  --color-tabs-text-underline: var(--color-volen-200);
+  --color-tabs-border-underline: var(--color-volen-500);
+  --color-tabs-border-underline-active: white;
+  --color-tabs-text-underline-active: white;
+
+  /* Slider - темная тема */
+  --color-slider-track-background: var(--color-volen-600);
+  --color-slider-range-background: var(--color-brand-primary);
+  --color-slider-thumb-background: var(--color-volen-800);
+  --color-slider-thumb-border: var(--color-brand-primary);
+  --color-slider-thumb-ring: var(--color-brand-primary);
+
+  /* Toast - темная тема */
+  --color-toast-background: var(--color-volen-700);
+}
+
+/* Глобальное применение шрифта */
+* {
+  font-family: var(--font-family-sans);
+}
+
+/* Принудительное применение шрифта для tooltip */
+[data-slot='tooltip-content'] {
+  font-family: var(--font-family-sans) !important;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--color-document-background);
+  --color-foreground: var(--color-text-primary);
+  --color-card: var(--color-card-background);
+  --color-card-foreground: var(--color-text-primary);
+  --color-popover: var(--color-popover-background);
+  --color-popover-foreground: var(--color-popover-text);
+  --color-primary: var(--color-brand-primary);
+  --color-primary-foreground: white;
+  --color-secondary: var(--color-volen-100);
+  --color-secondary-foreground: var(--color-text-primary);
+  --color-muted: var(--color-volen-100);
+  --color-muted-foreground: var(--color-text-secondary);
+  --color-accent: var(--color-volen-100);
+  --color-accent-foreground: var(--color-text-primary);
+  --color-destructive: var(--color-destructive-200);
+  --color-border: var(--color-border);
+  --color-input: var(--color-input);
+  --color-ring: var(--color-brand-primary);
+}
+
+:root {
+  --radius: 0.625rem;
+  background-color: var(--color-volen-50);
+}
+
+.mt-2{
+  margin-top: 0.5rem;
+}
+
+/* Calendar: dark theme middle-range background */
+.dark button[data-range-middle="true"] {
+  background-color: var(--color-volen-700);
+}

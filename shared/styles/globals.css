@@ -1,0 +1,271 @@
+@import './fonts.css';
+@import './variables.css';
+
+@import 'tailwindcss';
+
+
+/* ===========================================
+   GLOBAL RESET & BASE STYLES
+   =========================================== */
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
+
+/* ===========================================
+   BASE LAYOUT
+   =========================================== */
+
+:root,
+body,
+html {
+    height: 100%;
+    --removed-body-scroll-bar-size: 0px !important;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+    font-family: var(--font-family-primary);
+    font-feature-settings: 'kern';
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    --removed-body-scroll-bar-size: 0px !important;
+}
+
+/* ===========================================
+   THEME TRANSITIONS
+   =========================================== */
+
+.theme {
+    transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+@keyframes platformsMarqueeLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.platforms-marquee-track {
+    width: max-content;
+    animation: platformsMarqueeLeft 32s linear infinite;
+}
+
+.platforms-marquee-track:hover {
+    animation-play-state: paused;
+}
+
+/* ===========================================
+   SCROLLBAR STYLES
+   =========================================== */
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 2px;
+    border-radius: 100%;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: var(--volen-400);
+    border-radius: 26px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ===========================================
+   FORM ELEMENTS RESET
+   =========================================== */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=date]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+/* ===========================================
+   MODAL ANIMATIONS
+   =========================================== */
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes modalOverlayEnter {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes modalOverlayExit {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes modalContentEnter {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes modalContentExit {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(10px) scale(0.97);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===========================================
+   TOAST ANIMATIONS
+   =========================================== */
+
+@keyframes toastSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes toastSlideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(8px) scale(0.95);
+    }
+}
+
+/* ===========================================
+   DROPDOWN MENU ANIMATIONS
+   =========================================== */
+
+@keyframes dropdownMenuEnter {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes dropdownMenuExit {
+    from {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.97);
+    }
+}
+
+.dropdown-menu-enter {
+    animation: dropdownMenuEnter 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.dropdown-menu-exit {
+    animation: dropdownMenuExit 0.1s cubic-bezier(0.4, 0, 1, 1) forwards;
+}

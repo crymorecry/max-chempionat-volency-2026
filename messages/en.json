@@ -1,0 +1,11 @@
+{
+    "navigation": {
+        "main": "Home",
+        "appeals": "Appeals",
+        "house": "House",
+        "contact": "Contact"
+    },
+    "home": {
+        "title": "Home"
+    }
+}
