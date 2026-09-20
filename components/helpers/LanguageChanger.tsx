@@ -34,6 +34,7 @@ export default function LanguageChanger() {
             value={locale === 'ru' ? languages[0].value : languages[1].value}
             onChange={e => onSelectChange(e as any)}
             size="default"
+            className="px-0 pl-2"
             icon={<LanguageIcon className='w-4 h-4' />}
         />
     )

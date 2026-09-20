@@ -212,7 +212,7 @@ const Select: React.FC<SelectProps> = ({
                     <div className="flex gap-x-2 items-center cursor-pointer">
                         {icon}
                         <span className={cn(
-                            'truncate text-left',
+                            'truncate text-left font-medium',
                             !selectedOption && 'text-combobox-placeholder'
                         )} style={{
                             color: !selectedOption ? 'var(--color-combobox-placeholder)' : undefined

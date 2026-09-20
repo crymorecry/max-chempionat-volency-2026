@@ -14,17 +14,21 @@ export default function Init() {
     const { showToast } = useToast()
 
     const init = async () => {
-        const initUser = await fetch('/api/user/init', {
-            method: 'POST',
-            body: JSON.stringify({
-                pathname: window.location.href,
-            }),
-        })
-        const initUserData = await initUser.json()
-        if (initUser.ok && initUserData.valid) {
-            localStorage.setItem('userId', initUserData.userId)
-            router.push('/main')
-        } else {
+        try {
+            const initUser = await fetch('/api/user/init', {
+                method: 'POST',
+                body: JSON.stringify({
+                    pathname: window.location.href,
+                }),
+            })
+            const initUserData = await initUser.json()
+            if (initUser.ok && initUserData.valid) {
+                localStorage.setItem('userId', initUserData.userId)
+                router.push('/main')
+            } else {
+                showToast(t('error'), 'error')
+            }
+        } catch (error) {
             showToast(t('error'), 'error')
         }
     }

@@ -9,15 +9,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="en">
             <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
                 <NextIntlProvider>
-                    <MaxUIProvider>
-                        <ThemeProvider>
+                    <ThemeProvider>
+                        <MaxUIProvider>
                             <ToastProvider position="bottom-center">
                                 <div className="flex flex-col min-h-screen dark:bg-volen-900">
                                     {children}
                                 </div>
                             </ToastProvider>
-                        </ThemeProvider>
-                    </MaxUIProvider>
+                        </MaxUIProvider>
+                    </ThemeProvider>
                 </NextIntlProvider>
             </body>
         </html>
