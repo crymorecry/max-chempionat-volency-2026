@@ -6,7 +6,7 @@ import { ToastProvider } from "@/shared/ui/components/toast";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en">
+        <html suppressHydrationWarning>
             <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
                 <NextIntlProvider>
                     <ThemeProvider>

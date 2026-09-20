@@ -12,5 +12,19 @@
     },
     "home": {
         "title": "Home"
+    },
+    "addressSelector": {
+        "title": "Select address",
+        "owner": "Owner",
+        "tenant": "Арендатор"
+    },
+    "news": {
+        "title": "News",
+        "searchPlaceholder": "Search news",
+        "noNewsFound": "No news found",
+        "noNewsFoundDescription": "Try changing the search parameters",
+        "loadMore": "Load more",
+        "readMore": "Read more",
+        "titleNews": "News"
     }
-}
+}   

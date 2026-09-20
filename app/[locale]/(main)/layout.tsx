@@ -7,7 +7,7 @@ import Navigation from "@/components/layout/navigation/navigation";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html suppressHydrationWarning>
       <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
         <NextIntlProvider>
           <ThemeProvider>
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <MaxUIProvider>
               <div className="flex flex-col min-h-screen dark:bg-volen-900">
                 <Header />
-                <div className="w-11/12 mx-auto min-h-screen pt-28">
+                <div className="w-11/12 mx-auto min-h-screen pt-28 pb-32">
                   {children}
                 </div>
                 <Navigation />

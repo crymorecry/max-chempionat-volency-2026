@@ -12,5 +12,19 @@
     },
     "home": {
         "title": "Главная"
+    },
+    "addressSelector": {
+        "title": "Выберите адрес",
+        "owner": "Собственник",
+        "tenant": "Арендатор"
+    },
+    "news": {
+        "title": "Новости",
+        "searchPlaceholder": "Поиск новостей",
+        "noNewsFound": "Новостей не найдено",
+        "noNewsFoundDescription": "Попробуйте изменить параметры поиска",
+        "loadMore": "Загрузить больше",
+        "readMore": "Читать далее",
+        "titleNews": "Новость"
     }
 }

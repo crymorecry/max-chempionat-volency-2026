@@ -24,20 +24,34 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
     display: block;
     max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
     font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     overflow-wrap: break-word;
 }
 
-#root, #__next {
+#root,
+#__next {
     isolation: isolate;
 }
 
@@ -79,6 +93,7 @@ body {
     from {
         transform: translateX(0);
     }
+
     to {
         transform: translateX(-50%);
     }
@@ -138,6 +153,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -148,6 +164,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 0;
         transform: translateY(20px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -158,6 +175,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -167,6 +185,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
     from {
         opacity: 1;
     }
+
     to {
         opacity: 0;
     }
@@ -177,6 +196,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 0;
         transform: translateY(20px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -188,6 +208,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
     to {
         opacity: 0;
         transform: translateY(10px) scale(0.97);
@@ -199,6 +220,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 0;
         transform: translateY(-8px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -219,6 +241,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 0;
         transform: translateY(20px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -230,6 +253,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
     to {
         opacity: 0;
         transform: translateY(8px) scale(0.95);
@@ -245,6 +269,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 0;
         transform: translateY(-8px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -256,6 +281,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
+
     to {
         opacity: 0;
         transform: translateY(-4px) scale(0.97);
@@ -268,4 +294,38 @@ input[type=date]::-webkit-calendar-picker-indicator {
 
 .dropdown-menu-exit {
     animation: dropdownMenuExit 0.1s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%);
+        opacity: 1;
+    }
+}
+
+.animate-slideIn {
+    animation: slideIn 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    will-change: transform, opacity;
+}
+
+.animate-slideOut {
+    animation: slideOut 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+    will-change: transform, opacity;
 }
