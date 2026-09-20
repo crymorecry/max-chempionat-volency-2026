@@ -22,6 +22,7 @@ export default function Init() {
         })
         const initUserData = await initUser.json()
         if (initUser.ok && initUserData.valid) {
+            localStorage.setItem('userId', initUserData.userId)
             router.push('/main')
         } else {
             showToast(t('error'), 'error')

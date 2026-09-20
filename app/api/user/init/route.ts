@@ -93,5 +93,13 @@ export async function POST(request: Request) {
     };
     const isValid = await validateAppData(appData, BOT_TOKEN);
 
-    return NextResponse.json({ valid: isValid, BOT_TOKEN: BOT_TOKEN })
+    return NextResponse.json({ valid: isValid, userId: getUserId(appData) })
+}
+
+function getUserId(initData: string): number | null {
+    const params = new URLSearchParams(initData);
+    const userRaw = params.get("user");
+    const user = JSON.parse(userRaw as string);
+
+    return user.id ?? null;
 }
