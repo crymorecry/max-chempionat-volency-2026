@@ -22,12 +22,12 @@ export default function Init() {
         })
         const initUserData = await initUser.json()
         if (initUser.ok && initUserData.valid) {
-            router.push('/')
+            router.push('/main')
         } else {
             showToast(t('error'), 'error')
         }
     }
-    
+
     useEffect(() => {
         init()
     }, [])

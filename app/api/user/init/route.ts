@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-    const BOT_TOKEN = process.env.BOT_TOKEN as string;
+    const BOT_TOKEN = process.env.MAX_BOT_TOKEN as string;
     const USER_LINK = (await request.json()).pathname;
 
     const hashParams = new URLSearchParams(new URL(USER_LINK).hash.slice(1));
@@ -91,8 +91,7 @@ export async function POST(request: Request) {
         // Сравниваем с полученным хешем
         return hash === originalHash[1];
     };
-
     const isValid = await validateAppData(appData, BOT_TOKEN);
 
-    return NextResponse.json({ valid: isValid })
+    return NextResponse.json({ valid: isValid, BOT_TOKEN: BOT_TOKEN })
 }
