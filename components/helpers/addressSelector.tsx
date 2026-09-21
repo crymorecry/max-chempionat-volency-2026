@@ -35,6 +35,12 @@ export default function AddressSelector() {
 
     useEffect(() => {
         getAddresses();
+        let loading = true;
+        while (loading) {
+            if (addresses.length > 0) {
+                loading = false;
+            }
+        }
         if (localStorage.getItem('address')) {
             setSelectedAddress(JSON.parse(localStorage.getItem('address') || '{}'));
         } else {
