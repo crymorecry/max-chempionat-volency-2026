@@ -21,8 +21,25 @@ export default function AddressSelector() {
             });
             const data = await response.json();
             setAddresses(data);
+            checkAddresses();
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    function checkAddresses() {
+        if (addresses.length === 1) {
+            handleSelectAddress(addresses[0]);
+            localStorage.setItem('address', JSON.stringify(addresses[0]));
+        } else {
+            if (localStorage.getItem('address')) {
+                setSelectedAddress(JSON.parse(localStorage.getItem('address') || '{}'));
+            } else {
+                setIsOpen(true);
+                setSelectedAddress(null);
+                setShowCloseButton(false);
+                localStorage.removeItem('address');
+            }
         }
     }
 
@@ -35,24 +52,6 @@ export default function AddressSelector() {
 
     useEffect(() => {
         getAddresses();
-        let loading = true;
-        while (loading) {
-            if (addresses.length > 0) {
-                loading = false;
-            }
-        }
-        if (localStorage.getItem('address')) {
-            setSelectedAddress(JSON.parse(localStorage.getItem('address') || '{}'));
-        } else {
-            if (addresses.length === 1) {
-                handleSelectAddress(addresses[0]);
-            } else {
-                setIsOpen(true);
-                setSelectedAddress(null);
-                setShowCloseButton(false);
-                localStorage.removeItem('address');
-            }
-        }
     }, []);
 
     const t = useTranslations('addressSelector');
