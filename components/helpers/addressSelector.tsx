@@ -21,13 +21,13 @@ export default function AddressSelector() {
             });
             const data = await response.json();
             setAddresses(data);
-            checkAddresses();
+            checkAddresses(data);
         } catch (error) {
             console.error(error);
         }
     }
 
-    function checkAddresses() {
+    function checkAddresses(addresses: any[]) {
         if (addresses.length === 1) {
             handleSelectAddress(addresses[0]);
             localStorage.setItem('address', JSON.stringify(addresses[0]));
