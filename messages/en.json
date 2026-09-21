@@ -15,16 +15,33 @@
     },
     "addressSelector": {
         "title": "Select address",
-        "owner": "Owner",
-        "tenant": "Арендатор"
+        "OWNER": "Owner",
+        "TENANT": "Tenant"
     },
     "news": {
         "title": "News",
+        "description": "Here you can find all the news of the house",
         "searchPlaceholder": "Search news",
         "noNewsFound": "No news found",
         "noNewsFoundDescription": "Try changing the search parameters",
         "loadMore": "Load more",
         "readMore": "Read more",
         "titleNews": "News"
+    },
+    "main": {
+        "fast_action": {
+            "title": "Fast action",
+            "reportProblem": "Report problem",
+            "contactMC": "Contact MC"
+        },
+        "news": {
+            "title": "Home news",
+            "viewAll": "All news"
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "description": "Here you can find all the contacts of the house",
+        "call": "Call"
     }
 }   

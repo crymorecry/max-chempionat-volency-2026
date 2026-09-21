@@ -1,4 +1,7 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
+import { fakerRU as faker } from "@faker-js/faker";
+import { ApartmentRole } from "@prisma/client";
 
 export async function POST(request: Request) {
     const BOT_TOKEN = process.env.MAX_BOT_TOKEN as string;
@@ -92,14 +95,37 @@ export async function POST(request: Request) {
         return hash === originalHash[1];
     };
     const isValid = await validateAppData(appData, BOT_TOKEN);
-
-    return NextResponse.json({ valid: isValid, userId: getUserId(appData) })
+    if (isValid) {
+        const userId = getUser(appData)?.id;
+        if (userId) {
+            const user = await prisma.user.findUnique({
+                where: { maxUserId: userId.toString() },
+            });
+            if (user) {
+                return NextResponse.json({ valid: true, userId: user.id });
+            }
+            const newUser = await prisma.user.create({
+                data: {
+                    maxUserId: userId.toString(),
+                    name: getUser(appData)?.first_name + ' ' + getUser(appData)?.last_name || '',
+                },
+            });
+            const addAddress = await prisma.apartment.create({
+                data: { address: faker.location.streetAddress() + ' ' + faker.location.buildingNumber() }
+            })
+            const addUser = await prisma.userApartment.create({
+                data: { userId: newUser.id, apartmentId: addAddress.id, role: ApartmentRole.OWNER }
+            })
+            return NextResponse.json({ valid: true, userId: newUser.id });
+        }
+    }
+    return NextResponse.json({ valid: isValid, userId: getUser(appData) })
 }
 
-function getUserId(initData: string): number | null {
+function getUser(initData: string) {
     const params = new URLSearchParams(initData);
     const userRaw = params.get("user");
     const user = JSON.parse(userRaw as string);
 
-    return user.id ?? null;
+    return user ?? null;
 }

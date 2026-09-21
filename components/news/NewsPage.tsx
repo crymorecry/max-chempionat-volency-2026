@@ -29,7 +29,10 @@ export default function NewsPage() {
                     page: String(page),
                     limit: String(PAGE_SIZE),
                 });
-                const response = await fetch(`/api/house/getNews?${params.toString()}`);
+                const response = await fetch(`/api/house/getNews?${params.toString()}`, {
+                    method: 'POST',
+                    body: JSON.stringify({ apartmentId: JSON.parse(localStorage.getItem('address') || '{}').id }),
+                });
                 const data = await response.json();
 
                 setNews((prev) => (page === 1 ? data.news : [...prev, ...data.news]));

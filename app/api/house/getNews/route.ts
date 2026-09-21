@@ -1,70 +1,13 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
-export async function GET(request: Request) {
-    const news = [{
-        id: 1,
-        title: "Title 1",
-        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    }, {
-        id: 2,
-        title: "Title 2",
-        description: "Description 2",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 3,
-        title: "Title 3",
-        description: "Description 3",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 4,
-        title: "Title 4",
-        description: "Description 4",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 5,
-        title: "Title 5",
-        description: "Description 5",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 6,
-        title: "Title 6",
-        description: "Description 6",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 7,
-        title: "Title 7",
-        description: "Description 7",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    {
-        id: 8,
-        title: "Title 8",
-        description: "Description 8",
-        fullContent: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. ",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-    },
-    ]
+export async function POST(request: Request) {
+    const { apartmentId } = await request.json();
+    const news = await prisma.news.findMany({
+        where: {
+            apartmentId: apartmentId,
+        },
+    });
 
     const { searchParams } = new URL(request.url);
 

@@ -1,199 +1,135 @@
-//generator client {
-//  provider = "prisma-client-js"
-//}
-//
-//datasource db {
-//  provider = "postgresql"
-//  url      = env("DATABASE_URL")
-//}
-//model User {
-//  id        String   @id @default(cuid())
-//  email     String   @unique
-//  createdAt DateTime @default(now())
-//  updatedAt DateTime @updatedAt
-//  
-//  businesses      Business[]
-//  chatMessages    ChatMessage[]
-//  authTokens      AuthToken[]
-//  transactions    Transaction[]
-//  payments        Payment[]
-//  tasks           Task[]
-//  reminders       Reminder[]
-//}
-//
-//model Business {
-//  id            String   @id @default(cuid())
-//  userId        String
-//  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-//  name          String
-//  ip            String?
-//  address       String?
-//  yandexMapLink String?
-//  createdAt     DateTime @default(now())
-//  updatedAt     DateTime @updatedAt
-//  
-//  employees         Employee[]
-//  transactions      Transaction[]
-//  payments          Payment[]
-//  tasks             Task[]
-//  reminders         Reminder[]
-//  recurringExpenses RecurringExpense[]
-//  
-//  @@index([userId])
-//}
-//
-//model Employee {
-//  id          String   @id @default(cuid())
-//  businessId  String
-//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-//  name        String
-//  email       String?
-//  phone       String?
-//  position    String?
-//  dailyRate   Float
-//  workSchedule String  @default("5/2")
-//  notes       String?
-//  createdAt   DateTime @default(now())
-//  updatedAt   DateTime @updatedAt
-//
-//  days        EmployeeDay[]
-//
-//  @@index([businessId])
-//}
-//
-//model EmployeeDay {
-//  id          String   @id @default(cuid())
-//  employeeId  String
-//  employee    Employee @relation(fields: [employeeId], references: [id], onDelete: Cascade)
-//  date        DateTime
-//  type        String
-//  notes       String?
-//  createdAt   DateTime @default(now())
-//  updatedAt   DateTime @updatedAt
-//
-//  @@unique([employeeId, date])
-//  @@index([employeeId])
-//  @@index([date])
-//}
-//
-//model ChatMessage {
-//  id        String   @id @default(cuid())
-//  userId    String
-//  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-//  role      String
-//  content   String
-//  createdAt DateTime @default(now())
-//
-//  @@index([userId])
-//  @@index([createdAt])
-//}
-//
-//model AuthToken {
-//  id        String   @id @default(cuid())
-//  email     String
-//  code      String
-//  token     String?  @unique
-//  userId    String?
-//  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
-//  expiresAt DateTime
-//  createdAt DateTime @default(now())
-//  verified  Boolean  @default(false)
-//  
-//  @@index([email])
-//  @@index([token])
-//  @@index([code])
-//}
-//
-//model Transaction {
-//  id          String   @id @default(cuid())
-//  userId      String
-//  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-//  businessId  String
-//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-//  date        DateTime
-//  category    String
-//  type        String
-//  amount      Float
-//  description String
-//  createdAt   DateTime @default(now())
-//  updatedAt   DateTime @updatedAt
-//
-//  @@index([userId])
-//  @@index([businessId])
-//  @@index([date])
-//  @@index([category])
-//}
-//
-//model Payment {
-//  id          String   @id @default(cuid())
-//  userId      String
-//  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-//  businessId  String
-//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-//  date        DateTime
-//  contractor  String
-//  description String
-//  amount      Float
-//  status      String
-//  createdAt   DateTime @default(now())
-//  updatedAt   DateTime @updatedAt
-//
-//  @@index([userId])
-//  @@index([businessId])
-//  @@index([date])
-//  @@index([status])
-//}
-//
-//model Task {
-//  id        String   @id @default(cuid())
-//  userId    String
-//  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-//  businessId String
-//  business  Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-//  title     String
-//  priority  String
-//  deadline  DateTime
-//  status    String
-//  createdAt DateTime @default(now())
-//  updatedAt DateTime @updatedAt
-//
-//  @@index([userId])
-//  @@index([businessId])
-//  @@index([status])
-//  @@index([deadline])
-//}
-//
-//model Reminder {
-//  id          String   @id @default(cuid())
-//  userId      String
-//  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-//  businessId  String
-//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-//  title       String
-//  date        DateTime
-//  description String?
-//  completed   Boolean  @default(false)
-//  createdAt   DateTime @default(now())
-//  updatedAt   DateTime @updatedAt
-//
-//  @@index([userId])
-//  @@index([businessId])
-//  @@index([date])
-//  @@index([completed])
-//}
-//
-//
-//model RecurringExpense {
-//  id          String   @id @default(cuid())
-//  businessId  String
-//  business    Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
-//  name        String
-//  amount      Float
-//  frequency   String
-//  description String?
-//  createdAt   DateTime @default(now())
-//  updatedAt   DateTime @updatedAt
-//
-//  @@index([businessId])
-//}
-//
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ApartmentRole {
+  OWNER
+  TENANT
+}
+
+enum RequestStatus {
+  CREATED
+  IN_PROGRESS
+  RESOLVED
+}
+
+model User {
+  id        String @id @default(uuid())
+  maxUserId String @unique
+  name      String
+
+  apartments   UserApartment[]
+  requests     Request[]
+  leasesOwned  Lease[]         @relation("LeaseOwner")
+  leasesRented Lease[]         @relation("LeaseTenant")
+
+  createdAt DateTime @default(now())
+}
+
+model Apartment {
+  id      String @id @default(uuid())
+  address String
+
+  users    UserApartment[]
+  leases   Lease[]
+  news     News[]
+  requests Request[]
+  contacts Contact[]
+
+  createdAt DateTime @default(now())
+}
+
+model UserApartment {
+  id String @id @default(uuid())
+
+  userId      String
+  apartmentId String
+
+  role     ApartmentRole
+  isActive Boolean       @default(true)
+
+  user      User      @relation(fields: [userId], references: [id])
+  apartment Apartment @relation(fields: [apartmentId], references: [id])
+
+  @@unique([userId, apartmentId, role])
+}
+
+model Lease {
+  id String @id @default(uuid())
+
+  apartmentId String
+  ownerId     String
+  tenantId    String?
+
+  // Например 45000
+  price Int
+
+  // До какого числа платить
+  paymentDay Int
+
+  // До какого числа передавать счётчики
+  meterReadingDay Int?
+
+  // "Коммуналку оплачивает арендатор",
+  conditions String?
+
+  startsAt DateTime
+  endsAt   DateTime?
+
+  apartment Apartment @relation(fields: [apartmentId], references: [id])
+
+  owner  User  @relation("LeaseOwner", fields: [ownerId], references: [id])
+  tenant User? @relation("LeaseTenant", fields: [tenantId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model News {
+  id String @id @default(uuid())
+
+  apartmentId String
+
+  title       String
+  description String
+  fullContent String
+
+  apartment Apartment @relation(fields: [apartmentId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Request {
+  id String @id @default(uuid())
+
+  apartmentId String
+  userId      String
+
+  title       String
+  description String?
+
+  status RequestStatus @default(CREATED)
+
+  apartment Apartment @relation(fields: [apartmentId], references: [id])
+  user      User      @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Contact {
+  id          String @id @default(uuid())
+  apartmentId String
+
+  name        String
+  description String?
+  phone       String?
+
+  apartment Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+}

@@ -1,11 +1,13 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/prisma";
 
-export async function GET(request: Request) {
-    const addresses = [
-        { address: '123 Main St, Anytown, USA', type: "owner" },
-        { address: '456 Oak Ave, Othertown, USA', type: "tenant" },
-        { address: '789 Pine Rd, Anothertown, USA', type: "tenant" },
-    ]
-
-    return NextResponse.json(addresses);
+export async function POST(request: Request) {
+    const { userId } = await request.json();
+    const addresses = await prisma.userApartment.findMany({
+        where: { userId: userId },
+        include: {
+            apartment: true,
+        },
+    });
+    return NextResponse.json(addresses.map((address) => ({ id: address.apartmentId, address: address.apartment.address, type: address.role })));
 }

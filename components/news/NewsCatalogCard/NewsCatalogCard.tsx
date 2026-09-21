@@ -26,7 +26,7 @@ export default function NewsCatalogCard({ news }: { news: any }) {
                     <ArrowRightIcon className="w-3 h-3" />
                 </button>
             </Panel>
-            <Sheet isOpen={isOpen} onClose={() => setIsOpen(false)} title={`${t('titleNews')} №${news.id}`}>
+            <Sheet isOpen={isOpen} onClose={() => setIsOpen(false)} title={`${t('titleNews')}`}>
                 <div className="flex flex-col gap-y-4 w-11/12 mx-auto pt-4">
                     <div className="flex flex-col gap-y-0">
                         <Text size="2xl" variant="primary">{news.title}</Text>

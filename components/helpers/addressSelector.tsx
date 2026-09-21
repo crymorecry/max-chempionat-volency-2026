@@ -15,7 +15,10 @@ export default function AddressSelector() {
 
     const getAddresses = async () => {
         try {
-            const response = await fetch('/api/user/getAddresses');
+            const response = await fetch('/api/user/getAddresses', {
+                method: 'POST',
+                body: JSON.stringify({ userId: localStorage.getItem('userId') }),
+            });
             const data = await response.json();
             setAddresses(data);
         } catch (error) {
@@ -35,10 +38,14 @@ export default function AddressSelector() {
         if (localStorage.getItem('address')) {
             setSelectedAddress(JSON.parse(localStorage.getItem('address') || '{}'));
         } else {
-            setIsOpen(true);
-            setSelectedAddress(null);
-            setShowCloseButton(false);
-            localStorage.removeItem('address');
+            if (addresses.length === 1) {
+                handleSelectAddress(addresses[0]);
+            } else {
+                setIsOpen(true);
+                setSelectedAddress(null);
+                setShowCloseButton(false);
+                localStorage.removeItem('address');
+            }
         }
     }, []);
 
@@ -59,7 +66,7 @@ export default function AddressSelector() {
 
             <Sheet isOpen={isOpen} onClose={() => setIsOpen(false)} title={t('title')} showCloseButton={showCloseButton} enableSwipeToClose={showCloseButton}>
                 <div className="flex flex-col">
-                    {addresses.map((address, index  ) => (
+                    {addresses.map((address, index) => (
                         <Button variant="ghost" size="small" className="flex !border-b !border-volen-200 dark:!border-volen-700 !p-0 !rounded-none !py-2 !h-full" key={index} onClick={() => handleSelectAddress(address)}>
                             <div className='flex !w-screen'>
                                 <div className='flex justify-between w-11/12 mx-auto items-center'>

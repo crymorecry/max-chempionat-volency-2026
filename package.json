@@ -6,12 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.6.0",
     "@heroicons/react": "^2.2.0",
     "@maxhub/max-bot-api": "^0.3.1",
     "@maxhub/max-ui": "^0.5.0",
+    "@prisma/client": "^5.7.0",
     "@teispace/next-themes": "^3.0.2",
     "axios": "^1.20.0",
     "class-variance-authority": "^0.7.1",

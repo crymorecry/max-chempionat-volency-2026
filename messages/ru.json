@@ -15,16 +15,33 @@
     },
     "addressSelector": {
         "title": "Выберите адрес",
-        "owner": "Собственник",
-        "tenant": "Арендатор"
+        "OWNER": "Собственник",
+        "TENANT": "Арендатор"
     },
     "news": {
         "title": "Новости",
+        "description": "Здесь вы можете найти все новости дома",
         "searchPlaceholder": "Поиск новостей",
         "noNewsFound": "Новостей не найдено",
         "noNewsFoundDescription": "Попробуйте изменить параметры поиска",
         "loadMore": "Загрузить больше",
         "readMore": "Читать далее",
         "titleNews": "Новость"
+    },
+    "main": {
+        "fast_action": {
+            "title": "Быстрые действия",
+            "reportProblem": "Сообщить о проблеме",
+            "contactMC": "Связаться с УК"
+        },
+        "news": {
+            "title": "Новости дома",
+            "viewAll": "Все новости"
+        }
+    },
+    "contact": {
+        "title": "Контакты",
+        "description": "Здесь вы можете найти все контакты дома",
+        "call": "Позвонить"
     }
 }
