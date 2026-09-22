@@ -55,7 +55,9 @@
     "contact": {
         "title": "Contact",
         "description": "Here you can find all the contacts of the house",
-        "call": "Call"
+        "call": "Call",
+        "noContactsFound": "No contacts found",
+        "error": "Error fetching contacts"
     },
     "rent": {
         "title": "Rent",
@@ -95,5 +97,18 @@
             "sendInviteMax": "Send to MAX",
             "cancel": "Cancel invitation"
         }
+    },
+    "tenant": {
+        "title": "You are invited to the apartment",
+        "address": "Apartment address",
+        "price": "Rent price",
+        "payment": "Payment to",
+        "counter": "Counter reading to",
+        "month": "month",
+        "additionalСonditions": "Additional conditions",
+        "accept": "Accept",
+        "reject": "Reject",
+        "errorAccept": "Error accepting invitation",
+        "successAccept": "Invitation accepted"
     }
 }   

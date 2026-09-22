@@ -2,11 +2,20 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(request: Request) {
-    const { apartmentId } = await request.json();
-    if (!apartmentId) {
+    const { userId, apartmentId } = await request.json();
+    const fetchApartment = await prisma.userApartment.findMany({
+        where: {
+            userId: userId,
+        },
+        include: {
+            apartment: true,
+        },
+    });
+
+    if (!apartmentId && fetchApartment?.length >= 2) {
         return NextResponse.json({ error: 'Apartment ID is required' }, { status: 400 });
     }
-    const news = await prisma.news.findMany({
+    let news = await prisma.news.findMany({
         where: {
             apartmentId: apartmentId,
         },
@@ -14,7 +23,16 @@ export async function POST(request: Request) {
             createdAt: 'desc',
         },
     });
-
+    if(news.length === 0 && fetchApartment?.length === 1) {
+        news = await prisma.news.findMany({
+            where: {
+                apartmentId: fetchApartment[0].apartmentId,
+            },
+            orderBy: {
+                createdAt: 'desc',
+            },
+        });
+    }
     const { searchParams } = new URL(request.url);
 
     const search = searchParams.get('search')?.trim().toLowerCase() || '';

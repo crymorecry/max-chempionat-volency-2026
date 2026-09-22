@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import NewsCatalogSearch from "./NewsCatalogSearch/NewsCatalogSearch";
 import { useTranslations } from "next-intl";
 import NewsCatalogEmpty from "./NewsCatalogEmpty/NewsCatalogEmpty";
-import NewsCatalogLoading from "./NewsCatalogLoading/page";
+import NewsCatalogLoading from "./NewsCatalogLoading/NewsCatalogLoading";
 import NewsCatalogCard from "./NewsCatalogCard/NewsCatalogCard";
 import { Button } from "@maxhub/max-ui";
 import React from "react";
@@ -33,7 +33,7 @@ export default function NewsPage() {
                 });
                 const response = await fetch(`/api/house/getNews?${params.toString()}`, {
                     method: 'POST',
-                    body: JSON.stringify({ apartmentId: JSON.parse(localStorage.getItem('address') || '{}')?.id }),
+                    body: JSON.stringify({ userId: localStorage.getItem('userId'), apartmentId: JSON.parse(localStorage.getItem('address') || '{}')?.id }),
                 });
                 const data = await response.json();
                 if (response.ok) {

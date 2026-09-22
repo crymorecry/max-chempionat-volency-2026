@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     });
     const updateUrl = await prisma.lease.update({
         where: { id: createInvite.id },
-        data: { maxInviteUrl: `${process.env.MAX_BOT_URL}/startapp=${createInvite.id}` }
+        data: { maxInviteUrl: `${process.env.MAX_BOT_URL}?startapp=${createInvite.id}` }
     });
     return NextResponse.json({ url: updateUrl.maxInviteUrl });
 }

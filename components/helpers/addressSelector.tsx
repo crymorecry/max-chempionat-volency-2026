@@ -50,6 +50,8 @@ export default function AddressSelector() {
         setIsOpen(false);
         setShowCloseButton(true);
         localStorage.setItem('address', JSON.stringify(address));
+        window.location.reload();
+
     }
 
     useEffect(() => {

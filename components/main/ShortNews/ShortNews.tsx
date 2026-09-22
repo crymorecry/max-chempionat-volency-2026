@@ -18,6 +18,7 @@ export default function ShortNews() {
             const response = await fetch("/api/house/getNews?limit=2&page=1", {
                 method: "POST",
                 body: JSON.stringify({
+                    userId: localStorage.getItem('userId'),
                     apartmentId: (JSON.parse(localStorage.getItem("address") || "{}"))?.id,
                 })
             });
@@ -34,7 +35,7 @@ export default function ShortNews() {
     useEffect(() => {
         getNews();
     }, []);
-    return (
+    return news.length > 0 ? (
         <div className="flex flex-col gap-y-2">
             <div className="flex justify-between items-center">
                 <Text size="2xl" variant="primary">{t('title')}</Text>
@@ -53,5 +54,5 @@ export default function ShortNews() {
                 ))}
             </div>
         </div>
-    )
+    ) : null
 }

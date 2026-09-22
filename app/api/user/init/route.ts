@@ -8,6 +8,7 @@ export async function POST(request: Request) {
     const USER_LINK = (await request.json()).pathname;
 
     const hashParams = new URLSearchParams(new URL(USER_LINK).hash.slice(1));
+    const WebAppStartParam = (hashParams.get('WebAppData') || '').split('&').find((x) => x.startsWith('start_param='))?.split('=')[1];
     const appData: string = hashParams.get('WebAppData') || '';
     const platform: string = hashParams.get('WebAppPlatform') || '';
     const appVersion: string = hashParams.get('WebAppVersion') || '';
@@ -102,6 +103,17 @@ export async function POST(request: Request) {
                 where: { maxUserId: userId.toString() },
             });
             if (user) {
+                if (WebAppStartParam) {
+                    const lease = await prisma.lease.findUnique({
+                        where: { id: WebAppStartParam },
+                        include: {
+                            apartment: true,
+                        },
+                    });
+                    if (lease && lease.tenantId === null && lease.ownerId !== user.id) {
+                        return NextResponse.json({ valid: true, userId: user.id, lease: lease });
+                    }
+                }
                 return NextResponse.json({ valid: true, userId: user.id });
             }
             const newUser = await prisma.user.create({
@@ -110,12 +122,30 @@ export async function POST(request: Request) {
                     name: getUser(appData)?.first_name + ' ' + getUser(appData)?.last_name || '',
                 },
             });
+            //test
             const addAddress = await prisma.apartment.create({
                 data: { address: faker.location.streetAddress() + ' ' + faker.location.buildingNumber() }
             })
-            const addUser = await prisma.userApartment.create({
+
+            await prisma.userApartment.create({
                 data: { userId: newUser.id, apartmentId: addAddress.id, role: ApartmentRole.OWNER }
             })
+
+            if (WebAppStartParam) {
+                const lease = await prisma.lease.findUnique({
+                    where: { id: WebAppStartParam },
+                });
+                if (lease && lease.tenantId === null) {
+                    await prisma.userApartment.create({
+                        data: { userId: newUser.id, apartmentId: lease.apartmentId, role: ApartmentRole.TENANT }
+                    })
+                    const tenant = await prisma.lease.update({
+                        where: { id: WebAppStartParam },
+                        data: { tenantId: newUser.id }
+                    })
+                    return NextResponse.json({ valid: true, userId: newUser.id, lease: tenant });
+                }
+            }
             return NextResponse.json({ valid: true, userId: newUser.id });
         }
     }
