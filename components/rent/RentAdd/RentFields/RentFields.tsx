@@ -5,7 +5,7 @@ import { Text } from "@/shared/ui/components/text";
 import DateInput from "@/shared/ui/components/date-input";
 import { PlusIcon } from "lucide-react";
 
-export default function RentFields({ getLeases, setStep, setUrl }: { getLeases: () => void, setStep: (step: number) => void, setUrl: (url: string) => void }) {
+export default function RentFields({ setStep, setUrl }: { setStep: (step: number) => void, setUrl: (url: string) => void }) {
     const t = useTranslations('rent.fields');
 
     const [price, setPrice] = useState<string>("");
@@ -38,7 +38,6 @@ export default function RentFields({ getLeases, setStep, setUrl }: { getLeases: 
             if (response.ok) {
                 setStep(2);
                 setUrl(data.url);
-                getLeases();
             } else {
                 showToast(t('errorCreateInvite'), 'error');
             }
