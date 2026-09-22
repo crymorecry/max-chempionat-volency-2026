@@ -329,3 +329,7 @@ input[type=date]::-webkit-calendar-picker-indicator {
     animation: slideOut 0.35s cubic-bezier(0.32, 0.72, 0, 1) forwards;
     will-change: transform, opacity;
 }
+
+.font-gilroy {
+    font-family: 'Gilroy', sans-serif;
+}

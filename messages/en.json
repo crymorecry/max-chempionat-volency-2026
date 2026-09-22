@@ -1,4 +1,15 @@
 {
+    "ui": {
+        "dateInput": {
+            "day": "Day",
+            "month": "Month",
+            "year": "Year",
+            "dayPlaceholder": "dd",
+            "monthPlaceholder": "mm",
+            "yearPlaceholder": "yyyy",
+            "openCalendar": "Open calendar"
+        }
+    },
     "init": {
         "loading": "Loading application",
         "error": "Error loading application"
@@ -45,5 +56,44 @@
         "title": "Contact",
         "description": "Here you can find all the contacts of the house",
         "call": "Call"
+    },
+    "rent": {
+        "title": "Rent",
+        "description": "Manage the rental of the apartment and the conditions of residence",
+        "error": "Error fetching leases",
+        "empty": "Currently the apartment is not rented",
+        "emptyDescription": "Bring a tenant, if you start renting the apartment",
+        "rentAdd": "Invite a tenant",
+        "price": "Rent price",
+        "pricePlaceholder": "Specify the rental price",
+        "paymentDate": "Payment month number",
+        "paymentDatePlaceholder": "Specify the payment month number",
+        "counterDate": "Counter reading month number",
+        "counterDatePlaceholder": "Specify the counter reading month number",
+        "endsDate": "Ends date",
+        "endsDatePlaceholder": "Specify the ends date",
+        "optional": "optional",
+        "conditionsRent": "Conditions of rent",
+        "conditionsRentPlaceholder": "Specify the conditions of rent",
+        "createInvite": "Create invite",
+        "errorCreateInvite": "All fields must be filled",
+        "createdInvite": "Invite created",
+        "createdInviteDescription": "Send it to the tenant through MAX. After accepting the invitation, he will appear in the list",
+        "createdInviteLink": "Link created",
+        "copy": "Link copied",
+        "copyDescription": "Send it to the tenant through MAX. After accepting the invitation, he will appear in the list",
+        "copyLink": "Copy",
+        "sendInviteMax": "Send to MAX",
+        "notAllowed": {
+            "expectationAccept": "Expectation of acceptance",
+            "expectationAcceptDescription": "After accepting the invitation, he will appear in the list",
+            "month": "month",
+            "payment": "Payment to",
+            "counter": "Counter reading to",
+            "cancelSuccess": "Invitation cancelled",
+            "cancelError": "Error cancelling invitation",
+            "sendInviteMax": "Send to MAX",
+            "cancel": "Cancel invitation"
+        }
     }
 }   

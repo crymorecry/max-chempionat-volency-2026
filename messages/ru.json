@@ -1,4 +1,15 @@
 {
+    "ui": {
+        "dateInput": {
+            "day": "День",
+            "month": "Месяц",
+            "year": "Год",
+            "dayPlaceholder": "дд",
+            "monthPlaceholder": "мм",
+            "yearPlaceholder": "гггг",
+            "openCalendar": "Открыть календарь"
+        }
+    },
     "init": {
         "loading": "Загружаем приложение",
         "error": "Ошибка при загрузке приложения"
@@ -8,7 +19,7 @@
         "appeals": "Обращения",
         "news": "Новости",
         "contact": "Контакты",
-        "tenants": "Жильцы"
+        "rent": "Аренда"
     },
     "home": {
         "title": "Главная"
@@ -45,5 +56,48 @@
         "title": "Контакты",
         "description": "Здесь вы можете найти все контакты дома",
         "call": "Позвонить"
+    },
+    "rent": {
+        "title": "Аренда",
+        "description": "Управление арендой квартиры и условиями проживания",
+        "error": "Ошибка при получении аренд",
+        "empty": "Сейчас квартира не сдаётся",
+        "emptyDescription": "Добьте арендатора, если начнёте сдавать квартиру",
+        "rentAdd": "Пригласить жильца",
+        "fields": {
+            "price": "Стоимость аренды",
+            "pricePlaceholder": "Укажите стоимость аренды",
+            "paymentDate": "Число месяца оплаты",
+            "paymentDatePlaceholder": "Укажите число месяца оплаты",
+            "counterDate": "Показание счётчиков число месяца",
+            "counterDatePlaceholder": "Укажите число месяца показания счётчиков",
+            "endsDate": "Дата окончания аренды",
+            "endsDatePlaceholder": "Укажите дату окончания аренды",
+            "optional": "необязательно",
+            "conditionsRent": "Условия аренды",
+            "conditionsRentPlaceholder": "Укажите условия аренды",
+            "createInvite": "Создать приглашение",
+            "errorCreateInvite": "Не все поля заполнены"
+        },
+        "share": {
+            "createdInvite": "Приглашение создано",
+            "createdInviteDescription": "Отправьте её арендатору через MAX. После принятия приглашения он появится в списке",
+            "createdInviteLink": "Ссылка создана",
+            "copy": "Ссылка скопирована",
+            "copyDescription": "Отправьте её арендатору через MAX. После принятия приглашения он появится в списке",
+            "copyLink": "Копировать",
+            "sendInviteMax": "Отправить в MAX"
+        },
+        "notAllowed": {
+            "expectationAccept": "Ожидание принятия",
+            "expectationAcceptDescription": "После принятия приглашения он появится в списке",
+            "month": "месяц",
+            "payment": "Оплата до",
+            "counter": "Показание счётчиков до",
+            "cancelSuccess": "Приглашение отменено",
+            "cancelError": "Ошибка при отмене приглашения",
+            "sendInviteMax": "Отправить в MAX",
+            "cancel": "Отменить приглашение"
+        }
     }
 }

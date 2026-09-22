@@ -28,7 +28,7 @@ const Popover: React.FC<PopoverProps> = ({
     isOpen: controlledIsOpen,
     onOpenChange,
     position = 'bottom',
-    align = 'start',
+    align = 'end',
     trigger = 'click',
     closeOnClickOutside = true,
     closeOnEscape = true,
@@ -202,7 +202,6 @@ const Popover: React.FC<PopoverProps> = ({
                         marginBottom: position === 'top' ? `${offset}px` : undefined,
                         marginLeft: position === 'right' ? `${offset}px` : undefined,
                         marginRight: position === 'left' ? `${offset}px` : undefined,
-                        width: triggerWidth ? `${triggerWidth}px` : '100%',
                         minWidth: '11rem' // min-w-44 = 11rem = 176px
                     }}
                     role="dialog"

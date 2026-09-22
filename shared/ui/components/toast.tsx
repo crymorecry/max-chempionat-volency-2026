@@ -98,7 +98,7 @@ function Toaster({ toasts, position, onRemove, removingIds, onStartRemoving }: T
 
     return (
         <div
-            className={cn('fixed z-50 flex flex-col gap-2', getPositionClasses())}
+            className={cn('fixed z-[99999] flex flex-col gap-2', getPositionClasses())}
             style={{ pointerEvents: 'none' }}
         >
             {toasts.map((toast) => (

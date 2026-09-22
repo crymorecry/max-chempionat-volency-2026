@@ -75,13 +75,11 @@ model Lease {
   // До какого числа передавать счётчики
   meterReadingDay Int?
 
-  // "Коммуналку оплачивает арендатор",
-  conditions String?
+  conditionsRent String?
+  endsAt         DateTime?
 
-  startsAt DateTime
-  endsAt   DateTime?
-
-  apartment Apartment @relation(fields: [apartmentId], references: [id])
+  maxInviteUrl String?
+  apartment    Apartment @relation(fields: [apartmentId], references: [id])
 
   owner  User  @relation("LeaseOwner", fields: [ownerId], references: [id])
   tenant User? @relation("LeaseTenant", fields: [tenantId], references: [id])

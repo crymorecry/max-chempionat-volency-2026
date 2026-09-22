@@ -6,6 +6,7 @@ import Header from "@/components/layout/header/header";
 import Navigation from "@/components/layout/navigation/navigation";
 import ScreenDeviceProvider from "@/context/ScreenDeviceProvider";
 import { ToastProvider } from "@/shared/ui/components/toast";
+import Script from 'next/script'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </div>
                   <Navigation />
                 </div>
+                <Script src="https://st.max.ru/js/max-web-app.js"/>
               </ToastProvider>
               <ScreenDeviceProvider />
             </MaxUIProvider>
