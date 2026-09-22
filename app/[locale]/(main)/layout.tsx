@@ -4,6 +4,8 @@ import MaxUIProvider from "@/context/MaxUIProvider";
 import ThemeProvider from "@/context/ThemeProvider";
 import Header from "@/components/layout/header/header";
 import Navigation from "@/components/layout/navigation/navigation";
+import ScreenDeviceProvider from "@/context/ScreenDeviceProvider";
+import { ToastProvider } from "@/shared/ui/components/toast";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -11,15 +13,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full flex flex-col" cz-shortcut-listen="true">
         <NextIntlProvider>
           <ThemeProvider>
-
             <MaxUIProvider>
-              <div className="flex flex-col min-h-screen dark:bg-volen-900">
-                <Header />
-                <div className="w-11/12 mx-auto min-h-screen pt-28 pb-32">
-                  {children}
+              <ToastProvider position="bottom-center">
+                <div className="flex flex-col min-h-screen dark:bg-volen-900">
+                  <Header />
+                  <div className="w-11/12 mx-auto min-h-screen pt-28 pb-32">
+                    {children}
+                  </div>
+                  <Navigation />
                 </div>
-                <Navigation />
-              </div>
+              </ToastProvider>
+              <ScreenDeviceProvider />
             </MaxUIProvider>
           </ThemeProvider>
         </NextIntlProvider>

@@ -6,10 +6,13 @@ import { ChevronRightIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import React from "react";
 import NewsCatalogCard from "@/components/news/NewsCatalogCard/NewsCatalogCard";
+import { useToast } from "@/shared/ui/components/toast";
 
 export default function ShortNews() {
     const t = useTranslations("main.news");
     const [news, setNews] = useState([]);
+    const { showToast } = useToast();
+    const n = useTranslations('news');
     const getNews = async () => {
         try {
             const response = await fetch("/api/house/getNews?limit=2&page=1", {
@@ -19,9 +22,13 @@ export default function ShortNews() {
                 })
             });
             const data = await response.json();
-            setNews(data.news);
+            if (response.ok) {
+                setNews(data.news);
+            } else {
+                showToast(n('error'), 'error');
+            }
         } catch (error) {
-            console.error(error);
+            showToast(n('error'), 'error');
         }
     }
     useEffect(() => {

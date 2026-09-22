@@ -7,6 +7,7 @@ import NewsCatalogLoading from "./NewsCatalogLoading/page";
 import NewsCatalogCard from "./NewsCatalogCard/NewsCatalogCard";
 import { Button } from "@maxhub/max-ui";
 import React from "react";
+import { useToast } from "@/shared/ui/components/toast";
 
 const PAGE_SIZE = 5;
 
@@ -17,7 +18,8 @@ export default function NewsPage() {
     const [loading, setLoading] = useState(true);
     const t = useTranslations('news');
     const [maxPage, setMaxPage] = useState(1);
-
+    const { showToast } = useToast();
+    
     useEffect(() => {
         const getNews = async () => {
             if (page === 1) {
@@ -31,14 +33,17 @@ export default function NewsPage() {
                 });
                 const response = await fetch(`/api/house/getNews?${params.toString()}`, {
                     method: 'POST',
-                    body: JSON.stringify({ apartmentId: JSON.parse(localStorage.getItem('address') || '{}').id }),
+                    body: JSON.stringify({ apartmentId: JSON.parse(localStorage.getItem('address') || '{}')?.id }),
                 });
                 const data = await response.json();
-
-                setNews((prev) => (page === 1 ? data.news : [...prev, ...data.news]));
-                setMaxPage(data.maxPage || 1);
+                if (response.ok) {
+                    setNews((prev) => (page === 1 ? data.news : [...prev, ...data.news]));
+                    setMaxPage(data.maxPage || 1);
+                } else {
+                    showToast(t('error'), 'error');
+                }
             } catch (error) {
-                console.error(error);
+                showToast(t('error'), 'error');
             } finally {
                 setLoading(false);
             }

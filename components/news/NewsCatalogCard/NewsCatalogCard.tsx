@@ -12,7 +12,7 @@ export default function NewsCatalogCard({ news }: { news: any }) {
 
     return (
         <>
-            <Panel className="flex flex-col gap-y-2 border border-card-border rounded-xl p-4 hover:shadow-md transition-all cursor-pointer dark:!bg-card-background" >
+            <Panel onClick={() => setIsOpen(true)} className="flex flex-col gap-y-2 border border-card-border rounded-xl p-4 hover:shadow-md transition-all cursor-pointer dark:!bg-card-background" >
                 <div className="flex flex-col gap-y-0">
                     <Text size="base" variant="primary">{news.title}</Text>
                     <Text size="xs" variant="secondary">{formatDate(news.createdAt)}</Text>
@@ -21,7 +21,7 @@ export default function NewsCatalogCard({ news }: { news: any }) {
                 <EllipsisText maxLines={2}>
                     <Text size="sm" variant="secondary">{news.description}</Text>
                 </EllipsisText>
-                <button className="w-fit flex items-center text-primary" onClick={() => setIsOpen(true)}>
+                <button className="w-fit flex items-center text-primary">
                     <Text size="sm" variant="secondary" className="text-primary hover:text-primary-hover transition-all">{t('readMore')}</Text>
                     <ArrowRightIcon className="w-3 h-3" />
                 </button>

@@ -3,9 +3,15 @@ import { prisma } from "@/lib/prisma";
 
 export async function POST(request: Request) {
     const { apartmentId } = await request.json();
+    if (!apartmentId) {
+        return NextResponse.json({ error: 'Apartment ID is required' }, { status: 400 });
+    }
     const news = await prisma.news.findMany({
         where: {
             apartmentId: apartmentId,
+        },
+        orderBy: {
+            createdAt: 'desc',
         },
     });
 

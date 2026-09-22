@@ -16,7 +16,8 @@
     "addressSelector": {
         "title": "Select address",
         "OWNER": "Owner",
-        "TENANT": "Tenant"
+        "TENANT": "Tenant",
+        "error": "Error getting addresses"
     },
     "news": {
         "title": "News",
@@ -26,7 +27,8 @@
         "noNewsFoundDescription": "Try changing the search parameters",
         "loadMore": "Load more",
         "readMore": "Read more",
-        "titleNews": "News"
+        "titleNews": "News",
+        "error": "Error getting news"
     },
     "main": {
         "fast_action": {

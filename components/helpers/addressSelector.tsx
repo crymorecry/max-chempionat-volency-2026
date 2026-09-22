@@ -5,14 +5,16 @@ import { ChevronRightIcon, MapPinIcon } from '@heroicons/react/24/outline'
 import { Button } from '@maxhub/max-ui'
 import Sheet from '@/shared/ui/components/sheet'
 import { useTranslations } from 'next-intl';
+import { useToast } from '@/shared/ui/components/toast';
 
 export default function AddressSelector() {
     const [selectedAddress, setSelectedAddress] = useState<any>(null);
     const [isOpen, setIsOpen] = useState(false);
     const [showCloseButton, setShowCloseButton] = useState(true);
-
+    const { showToast } = useToast();
     const [addresses, setAddresses] = useState<any[]>([]);
 
+    const t = useTranslations('addressSelector');
     const getAddresses = async () => {
         try {
             const response = await fetch('/api/user/getAddresses', {
@@ -23,7 +25,7 @@ export default function AddressSelector() {
             setAddresses(data);
             checkAddresses(data);
         } catch (error) {
-            console.error(error);
+            showToast(t('error'), 'error');
         }
     }
 
@@ -51,10 +53,13 @@ export default function AddressSelector() {
     }
 
     useEffect(() => {
-        getAddresses();
+        if (localStorage.getItem('userId')) {
+            getAddresses();
+        } else {
+            showToast(t('error'), 'error');
+        }
     }, []);
 
-    const t = useTranslations('addressSelector');
     return (
         <>
             <Button variant="ghost" size="small" className=" flex !border-t !border-volen-200 dark:!border-volen-700 w-full !rounded-none !p-0" onClick={() => setIsOpen(true)}>
