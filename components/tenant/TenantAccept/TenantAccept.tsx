@@ -22,7 +22,7 @@ export default function TenantAccept({ lease }: { lease: any }) {
             if (response.ok) {
                 setIsOpen(false)
                 showToast(t('successAccept'), 'success')
-                localStorage.setItem('address', data.toString())
+                localStorage.setItem('address', JSON.stringify(data))
                 router.push('/main')
             } else {
                 showToast(t('errorAccept'), 'error')
