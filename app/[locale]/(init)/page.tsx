@@ -7,6 +7,7 @@ import { useTranslations } from "next-intl"
 import { useRouter } from "next/navigation"
 import { useToast } from "@/shared/ui/components/toast"
 import TenantAccept from "@/components/tenant/TenantAccept/TenantAccept"
+import CopyPathname from "@/app/api/admin/CopyPathname/CopyPathname"
 
 export default function Init() {
     const t = useTranslations('init')
@@ -40,7 +41,7 @@ export default function Init() {
     }
 
     useEffect(() => {
-        init()
+        //init()
     }, [])
 
     return (
@@ -53,6 +54,8 @@ export default function Init() {
             {lease && (
                 <TenantAccept lease={lease}/>
             )}
+
+            <CopyPathname/>
         </div>
     )
 }
