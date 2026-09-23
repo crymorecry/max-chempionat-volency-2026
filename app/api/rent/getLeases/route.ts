@@ -25,6 +25,9 @@ export async function POST(request: Request) {
             apartmentId: apartmentId,
             isActive: false,
         },
+        include: {
+            tenant: true,
+        },
     });
     return NextResponse.json({
         now: nowLease,

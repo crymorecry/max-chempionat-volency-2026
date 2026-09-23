@@ -68,13 +68,13 @@ export default function TenantAccept({ lease }: { lease: any }) {
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <button
-                        className="w-full bg-primary rounded-xl hover:bg-primary/80 transition-all h-10 flex items-center justify-center"
+                        className="w-full bg-primary rounded-xl focus:bg-primary/80 transition-all h-10 flex items-center justify-center"
                         onClick={handleAccept}
                     >
                         <Text size="base" variant="primary" className="text-volen-50">{t('accept')}</Text>
                     </button>
                     <button
-                        className="w-full bg-destructive rounded-xl hover:bg-destructive/80 transition-all h-10 flex items-center justify-center"
+                        className="w-full bg-destructive rounded-xl focus:bg-destructive/80 transition-all h-10 flex items-center justify-center"
                         onClick={handleReject}
                     >
                         <Text size="base" variant="primary" className="text-volen-50">{t('reject')}</Text>

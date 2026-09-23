@@ -36,13 +36,13 @@ export default function RentShare({ url }: { url: string }) {
             </div>
             <div className="flex flex-col gap-y-2 w-full">
                 <button
-                    className="w-full bg-primary rounded-xl hover:bg-primary/80 transition-all h-10 flex items-center justify-center"
+                    className="w-full bg-primary rounded-xl focus:bg-primary/80 transition-all h-10 flex items-center justify-center"
                     onClick={handleSendInviteMax}
                 >
                     <Text size="base" variant="primary" className="text-volen-50">{t('sendInviteMax')}</Text>
                 </button>
                 <button
-                    className="gap-x-2 w-full dark:bg-volen-700 bg-volen-100 rounded-xl hover:bg-volen-400/80 transition-all h-10 flex items-center justify-center"
+                    className="gap-x-2 w-full dark:bg-volen-700 bg-volen-100 rounded-xl focus:bg-volen-400/80 transition-all h-10 flex items-center justify-center"
                     onClick={handleCopy}
                 >
                     <CopyIcon className="w-4 h-4 text-text-primary" />

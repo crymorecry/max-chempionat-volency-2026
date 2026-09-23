@@ -114,7 +114,7 @@ export default function RentFields({ setStep, setUrl }: { setStep: (step: number
             </div>
 
             <button
-                className="w-full bg-primary rounded-xl hover:bg-primary/80 transition-all h-10 flex items-center justify-center"
+                className="w-full bg-primary rounded-xl focus:bg-primary/80 transition-all h-10 flex items-center justify-center"
                 onClick={() => createInvite()}
             >
                 <div className="flex gap-x-2 items-center">

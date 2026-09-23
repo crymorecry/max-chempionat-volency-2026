@@ -79,6 +79,8 @@ model Lease {
   conditionsRent String?
 
   isActive     Boolean   @default(true)
+  endDate      DateTime?
+  
   maxInviteUrl String?
   apartment    Apartment @relation(fields: [apartmentId], references: [id])
 

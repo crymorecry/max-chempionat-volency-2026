@@ -5,13 +5,17 @@ import { BanknoteIcon, CalendarIcon, ScrollTextIcon } from "lucide-react";
 
 export default function RentAllowed({ getLeases, lease }: { getLeases: () => Promise<void>, lease: any }) {
     const t = useTranslations('rent.allowed');
-
-    const openUserInMax = (maxUserId: string) => {
-        window.location.href = `max://user/${maxUserId}`;
-    };
-
-    const handleCancelLease = () => {
-        console.log('cancel lease');
+    const handleEndLease = async () => {
+        const response = await fetch('/api/rent/endLease', {
+            method: 'POST',
+            body: JSON.stringify({
+                userId: lease.ownerId,
+                leaseId: lease.id
+            }),
+        });
+        if (response.ok) {
+            getLeases();
+        }
     }
 
     return (
@@ -21,7 +25,7 @@ export default function RentAllowed({ getLeases, lease }: { getLeases: () => Pro
                     <img src={lease.tenant?.photo || ''} alt="Photo" width={100} height={100} className="rounded-full w-20 h-20" />
                 ) : (
                     <div className="w-20 h-20 bg-volen-100 rounded-full items-center justify-center flex">
-                        <Text size="2xl" variant="primary" className="text-center">{lease.tenant?.name.split(' ').map((name: string) => name[0].toUpperCase()).join('')}</Text>
+                        <Text size="2xl" variant="primary" className="text-center text-volen-900">{lease.tenant?.name.split(' ').map((name: string) => name[0].toUpperCase()).join('')}</Text>
                     </div>
                 )}
                 <div className="flex flex-col justify-between h-full py-1">
@@ -48,14 +52,8 @@ export default function RentAllowed({ getLeases, lease }: { getLeases: () => Pro
             </div>
             <div className="flex flex-col gap-y-2">
                 <button
-                    className="w-full bg-primary rounded-xl hover:bg-primary/80 transition-all h-10 flex items-center justify-center"
-                    onClick={() => openUserInMax(lease.tenant.maxUserId)}
-                >
-                    <Text size="base" variant="primary" className="!font-medium text-volen-50">{t('writeInMax')}</Text>
-                </button>
-                <button
-                    className="w-full bg-destructive rounded-xl hover:bg-destructive/80 transition-all h-10 flex items-center justify-center"
-                    onClick={handleCancelLease}
+                    className="w-full bg-destructive rounded-xl focus:bg-destructive/80 transition-all h-10 flex items-center justify-center"
+                    onClick={handleEndLease}
                 >
                     <Text size="base" variant="primary" className="!font-medium text-volen-50">{t('endLease')}</Text>
                 </button>

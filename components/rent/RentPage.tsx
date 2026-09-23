@@ -6,6 +6,9 @@ import RentEmpty from "./RentEmpty/RentEmpty";
 import { Loader2 } from "lucide-react";
 import RentNotAllowed from "./RentNotAllowed/RentNotAllowed";
 import RentAllowed from "./RentAllowed/RentAllowed";
+import { Text } from "@/shared/ui/components/text";
+import RentHistoryCard from "./RentHistoryCard/RentHistoryCard";
+import React from "react";
 
 export default function RentPage() {
 
@@ -60,6 +63,16 @@ export default function RentPage() {
         ) : (
           <RentEmpty getLeases={getLeases} />
         )
+      )}
+      {leasesLast.length > 0 && (
+        <div className="flex flex-col gap-y-4">
+          <Text size="2xl" variant="primary">{t('pastLeases')}</Text>
+          {leasesLast.map((lease: any) => (
+            <React.Fragment key={lease.id}>
+              <RentHistoryCard lease={lease} />
+            </React.Fragment>
+          ))}
+        </div>
       )}
     </>
   )
