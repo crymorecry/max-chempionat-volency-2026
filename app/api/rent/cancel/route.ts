@@ -11,10 +11,5 @@ export async function POST(request: Request) {
     if (!lease) {
         return NextResponse.json({ error: 'Lease not found' }, { status: 404 });
     }
-    await prisma.lease.delete({
-        where: {
-            id: leaseId,
-        },
-    });
     return NextResponse.json({ message: 'Lease cancelled' }, { status: 200 });
 }

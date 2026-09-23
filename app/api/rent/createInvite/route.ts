@@ -2,18 +2,21 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function POST(request: Request) {
-    const { ownerId, apartmentId, price, paymentDate, counterDate, endsDate, conditionsRent } = await request.json();
+    const { ownerId, apartmentId, price, paymentDate, counterDate, conditionsRent } = await request.json();
     if (!ownerId || !apartmentId || !price || !paymentDate || !counterDate) {
         return NextResponse.json({ error: "All fields must be filled" }, { status: 400 });
     }
-    const allRents = await prisma.lease.findMany({
+    const allRents = await prisma.lease.findFirst({
         where: {
             apartmentId: apartmentId,
             ownerId: ownerId,
+            isActive: true,
+        },
+        orderBy: {
+            id: 'desc',
         },
     });
-    const leases = allRents.reverse();
-    if (((leases[0]?.endsAt && leases[0]?.endsAt < new Date()) || !leases[0]?.endsAt) && leases.length > 0) {
+    if (allRents) {
         return NextResponse.json({ error: "Rent already exists" }, { status: 400 });
     }
     const createInvite = await prisma.lease.create({
@@ -23,7 +26,6 @@ export async function POST(request: Request) {
             price: price,
             paymentDay: paymentDate,
             meterReadingDay: counterDate,
-            endsAt: endsDate,
             conditionsRent: conditionsRent,
         }
     });

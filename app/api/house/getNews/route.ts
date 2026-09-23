@@ -20,7 +20,7 @@ export async function POST(request: Request) {
             apartmentId: apartmentId,
         },
         orderBy: {
-            createdAt: 'desc',
+            id: 'desc',
         },
     });
     if(news.length === 0 && fetchApartment?.length === 1) {
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
                 apartmentId: fetchApartment[0].apartmentId,
             },
             orderBy: {
-                createdAt: 'desc',
+                id: 'desc',
             },
         });
     }

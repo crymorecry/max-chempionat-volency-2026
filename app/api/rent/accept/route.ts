@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { ApartmentRole } from "@prisma/client";
 
 export async function POST(request: Request) {
     const { userId, leaseId } = await request.json();
@@ -19,5 +20,8 @@ export async function POST(request: Request) {
             apartment: true,
         },
     });
+    await prisma.userApartment.create({
+        data: { userId: userId, apartmentId: address.apartmentId, role: ApartmentRole.TENANT },
+    }); 
     return NextResponse.json({ id: address.apartment.id, address: address.apartment.address, type: "TENANT" }, { status: 200 });
 }

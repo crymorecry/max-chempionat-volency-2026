@@ -7,6 +7,9 @@ export async function POST(request: Request) {
         where: {
             apartmentId: apartmentId,
         },
+        orderBy: {
+            id: 'desc',
+        },
     });
     return NextResponse.json(contacts);
 }

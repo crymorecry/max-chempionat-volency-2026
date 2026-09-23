@@ -11,7 +11,6 @@ export default function RentFields({ setStep, setUrl }: { setStep: (step: number
     const [price, setPrice] = useState<string>("");
     const [paymentDate, setPaymentDate] = useState<string>("");
     const [counterDate, setCounterDate] = useState<string>("");
-    const [endsDate, setEndsDate] = useState<Date | null>(null);
     const [conditionsRent, setConditionsRent] = useState<string>("");
 
     const { showToast } = useToast();
@@ -27,7 +26,6 @@ export default function RentFields({ setStep, setUrl }: { setStep: (step: number
                 price: Number(price),
                 paymentDate: Number(paymentDate),
                 counterDate: Number(counterDate),
-                endsDate: endsDate,
                 conditionsRent: conditionsRent,
             }
             const response = await fetch('/api/rent/createInvite', {
@@ -101,16 +99,6 @@ export default function RentFields({ setStep, setUrl }: { setStep: (step: number
                     style={{ color: 'var(--color-input-text)' }}
                     value={counterDate}
                     onChange={(e) => setCounterDate(e.target.value)}
-                />
-            </div>
-            <div className="flex flex-col gap-y-0.5">
-                <div className="flex gap-x-1 items-center">
-                    <Text size="base" variant="primary">{t('endsDate')}</Text>
-                    <Text size="base" variant="secondary">({t('optional')})</Text>
-                </div>
-                <DateInput
-                    value={endsDate}
-                    onChange={setEndsDate}
                 />
             </div>
 

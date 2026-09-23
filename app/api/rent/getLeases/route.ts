@@ -6,21 +6,25 @@ export async function POST(request: Request) {
     if (!ownerId || !apartmentId) {
         return NextResponse.json({ error: "Owner ID and apartment ID are required" }, { status: 400 });
     }
-    const fetchLeases = await prisma.lease.findMany({
+    const nowLease = await prisma.lease.findFirst({
         where: {
             ownerId: ownerId,
             apartmentId: apartmentId,
+            isActive: true,
+        },
+        orderBy: {
+            id: 'desc',
         },
     });
-    const leases = fetchLeases.reverse();
-    if (((leases[0]?.endsAt && leases[0]?.endsAt < new Date()) || !leases[0]?.endsAt) && leases.length > 0) {
-        return NextResponse.json({
-            now: leases[0] || null,
-            past: leases.slice(1),
-        });
-    }
+    const pastLeases = await prisma.lease.findMany({
+        where: {
+            ownerId: ownerId,
+            apartmentId: apartmentId,
+            isActive: false,
+        },
+    });
     return NextResponse.json({
-        now: null,
-        past: leases,
+        now: nowLease,
+        past: pastLeases,
     });
 }

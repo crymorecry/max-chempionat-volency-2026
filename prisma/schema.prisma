@@ -60,7 +60,7 @@ model UserApartment {
 }
 
 model Lease {
-  id String @id @default(uuid())
+  id Int @id @default(autoincrement())
 
   apartmentId String
   ownerId     String
@@ -76,8 +76,8 @@ model Lease {
   meterReadingDay Int?
 
   conditionsRent String?
-  endsAt         DateTime?
 
+  isActive     Boolean   @default(true)
   maxInviteUrl String?
   apartment    Apartment @relation(fields: [apartmentId], references: [id])
 
@@ -88,7 +88,7 @@ model Lease {
 }
 
 model News {
-  id String @id @default(uuid())
+  id Int @id @default(autoincrement())
 
   apartmentId String
 
@@ -102,7 +102,7 @@ model News {
 }
 
 model Request {
-  id String @id @default(uuid())
+  id Int @id @default(autoincrement())
 
   apartmentId String
   userId      String
@@ -120,7 +120,7 @@ model Request {
 }
 
 model Contact {
-  id          String @id @default(uuid())
+  id          Int @id @default(autoincrement())
   apartmentId String
 
   name        String
