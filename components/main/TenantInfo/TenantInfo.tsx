@@ -18,8 +18,10 @@ export default function TenantInfo() {
                     addressId: JSON.parse(localStorage.getItem("address") || "{}").id,
                 }),
             });
-            const data = await response.json();
-            setTenantInfo(data);
+            if (response.ok) {
+                const data = await response.json();
+                setTenantInfo(data);
+            }
         } catch (error) {
             console.error(error);
         } finally {
@@ -28,7 +30,7 @@ export default function TenantInfo() {
     }
 
     useEffect(() => {
-        if(JSON.parse(localStorage.getItem("address") || "{}")) {
+        if (JSON.parse(localStorage.getItem("address") || "{}")) {
             getInfo();
         }
     }, []);
