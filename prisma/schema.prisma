@@ -22,6 +22,7 @@ model User {
   id        String @id @default(uuid())
   maxUserId String @unique
   name      String
+  photo     String?
 
   apartments   UserApartment[]
   requests     Request[]

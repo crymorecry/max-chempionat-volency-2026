@@ -96,6 +96,7 @@ export async function POST(request: Request) {
         return hash === originalHash[1];
     };
     const isValid = await validateAppData(appData, BOT_TOKEN);
+    console.log(WebAppStartParam)
     if (isValid) {
         const userId = getUser(appData)?.id;
         if (userId) {
@@ -103,6 +104,10 @@ export async function POST(request: Request) {
                 where: { maxUserId: userId.toString() },
             });
             if (user) {
+                await prisma.user.update({
+                    where: { maxUserId: userId.toString() },
+                    data: { photo: getUser(appData)?.photo_url || '' },
+                });
                 if (WebAppStartParam) {
                     const lease = await prisma.lease.findFirst({
                         where: { id: Number(WebAppStartParam), isActive: true },
@@ -120,6 +125,7 @@ export async function POST(request: Request) {
                 data: {
                     maxUserId: userId.toString(),
                     name: getUser(appData)?.first_name + ' ' + getUser(appData)?.last_name || '',
+                    photo: getUser(appData)?.photo_url || '',
                 },
             });
             //test
@@ -135,15 +141,8 @@ export async function POST(request: Request) {
                 const lease = await prisma.lease.findUnique({
                     where: { id: Number(WebAppStartParam), isActive: true },
                 });
-                if (lease && lease.tenantId === null) {
-                    await prisma.userApartment.create({
-                        data: { userId: newUser.id, apartmentId: lease.apartmentId, role: ApartmentRole.TENANT }
-                    })
-                    const tenant = await prisma.lease.update({
-                        where: { id: Number(WebAppStartParam), isActive: true },
-                        data: { tenantId: newUser.id }
-                    })
-                    return NextResponse.json({ valid: true, userId: newUser.id, lease: tenant });
+                if (lease && lease.tenantId === null && lease.ownerId !== newUser.id) {
+                    return NextResponse.json({ valid: true, userId: newUser.id, lease: lease });
                 }
             }
             return NextResponse.json({ valid: true, userId: newUser.id });

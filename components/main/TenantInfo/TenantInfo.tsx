@@ -28,7 +28,9 @@ export default function TenantInfo() {
     }
 
     useEffect(() => {
-        getInfo();
+        if(JSON.parse(localStorage.getItem("address") || "{}")) {
+            getInfo();
+        }
     }, []);
 
     return tenantInfo && (

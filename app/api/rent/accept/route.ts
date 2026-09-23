@@ -20,6 +20,7 @@ export async function POST(request: Request) {
             apartment: true,
         },
     });
+    console.log(address + "address\n\n\n\n\n")
     await prisma.userApartment.create({
         data: { userId: userId, apartmentId: address.apartmentId, role: ApartmentRole.TENANT },
     }); 

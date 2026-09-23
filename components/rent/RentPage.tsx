@@ -5,13 +5,14 @@ import { useToast } from "@/shared/ui/components/toast";
 import RentEmpty from "./RentEmpty/RentEmpty";
 import { Loader2 } from "lucide-react";
 import RentNotAllowed from "./RentNotAllowed/RentNotAllowed";
+import RentAllowed from "./RentAllowed/RentAllowed";
 
 export default function RentPage() {
 
   const [leasesNow, setLeasesNow] = useState<any>(null);
   const [leasesLast, setLeasesLast] = useState([]);
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { showToast } = useToast();
 
   const getLeases = async () => {
@@ -49,10 +50,10 @@ export default function RentPage() {
         leasesNow ? (
           <>
             {(() => {
-              if (leasesNow.tenantID == null) {
+              if (leasesNow.tenantId == null) {
                 return <RentNotAllowed getLeases={getLeases} lease={leasesNow} />
               } else {
-                return <>сдается епта!!!</>
+                return <RentAllowed getLeases={getLeases} lease={leasesNow} />
               }
             })()}
           </>

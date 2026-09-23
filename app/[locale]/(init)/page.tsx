@@ -41,7 +41,7 @@ export default function Init() {
     }
 
     useEffect(() => {
-        //init()
+        init()
     }, [])
 
     return (
@@ -55,7 +55,6 @@ export default function Init() {
                 <TenantAccept lease={lease}/>
             )}
 
-            <CopyPathname/>
         </div>
     )
 }

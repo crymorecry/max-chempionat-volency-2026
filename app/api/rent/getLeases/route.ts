@@ -12,6 +12,9 @@ export async function POST(request: Request) {
             apartmentId: apartmentId,
             isActive: true,
         },
+        include: {
+            tenant: true,
+        },
         orderBy: {
             id: 'desc',
         },

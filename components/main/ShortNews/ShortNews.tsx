@@ -25,15 +25,15 @@ export default function ShortNews() {
             const data = await response.json();
             if (response.ok) {
                 setNews(data.news);
-            } else {
-                showToast(n('error'), 'error');
             }
         } catch (error) {
             showToast(n('error'), 'error');
         }
     }
     useEffect(() => {
-        getNews();
+        if(JSON.parse(localStorage.getItem("address") || "{}")) {
+            getNews();
+        }
     }, []);
     return news.length > 0 ? (
         <div className="flex flex-col gap-y-2">

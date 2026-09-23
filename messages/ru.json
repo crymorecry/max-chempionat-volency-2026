@@ -100,6 +100,14 @@
             "cancelError": "Ошибка при отмене приглашения",
             "sendInviteMax": "Отправить в MAX",
             "cancel": "Отменить приглашение"
+        },
+        "allowed": {
+            "tenant": "Арендатор",
+            "month": "месяц",
+            "payment": "Оплата до",
+            "counter": "Показание счётчиков до",
+            "writeInMax": "Написать в MAX",
+            "endLease": "Завершить аренду"
         }
     },
     "tenant": {

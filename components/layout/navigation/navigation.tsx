@@ -14,9 +14,11 @@ export default function Navigation() {
 
     const [isTenant, setIsTenant] = useState(false)
     useEffect(() => {
-        const address = JSON.parse(localStorage.getItem('address') || '{}')
-        if (address.type === "TENANT") {
-            setIsTenant(true)
+        if(JSON.parse(localStorage.getItem("address") || "{}")) {
+            const address = JSON.parse(localStorage.getItem('address') || '{}')
+            if (address.type === "TENANT") {
+                setIsTenant(true)
+            }
         }
     }, [pathname])
     return (
