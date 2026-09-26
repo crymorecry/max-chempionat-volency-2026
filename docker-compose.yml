@@ -1,6 +1,26 @@
 version: '3.8'
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: maxDomovik_app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/domov
+      MAX_BOT_URL: ${MAX_BOT_URL}
+      MAX_BOT_TOKEN: ${MAX_BOT_TOKEN}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - domov_network
+
   postgres:
     image: postgres:15-alpine
     container_name: domov_db
@@ -14,7 +34,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d domov"]
       interval: 10s
       timeout: 5s
       retries: 5
