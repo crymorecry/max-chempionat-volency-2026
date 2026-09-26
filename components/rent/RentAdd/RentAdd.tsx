@@ -17,7 +17,7 @@ export default function RentAdd({ getLeases }: { getLeases: () => void }) {
         <>
             <Button size="small" className="w-48" onClick={() => { setIsOpen(true); setStep(1); }}>
                 <div className="flex gap-x-2 items-center">
-                    <PlusIcon className=" w-4 h-4" />
+                    <PlusIcon className="min-w-4 min-h-4 w-4 h-4" />
                     <Text size="base" variant="primary" className="text-volen-50">{t('rentAdd')}</Text>
                 </div>
             </Button>
