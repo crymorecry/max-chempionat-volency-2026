@@ -1,114 +1,205 @@
 {
     "ui": {
-        "dateInput": {
-            "day": "Day",
-            "month": "Month",
-            "year": "Year",
-            "dayPlaceholder": "dd",
-            "monthPlaceholder": "mm",
-            "yearPlaceholder": "yyyy",
-            "openCalendar": "Open calendar"
-        }
+      "dateInput": {
+        "day": "Day",
+        "month": "Month",
+        "year": "Year",
+        "dayPlaceholder": "dd",
+        "monthPlaceholder": "mm",
+        "yearPlaceholder": "yyyy",
+        "openCalendar": "Open calendar"
+      }
     },
     "init": {
-        "loading": "Loading application",
-        "error": "Error loading application"
+      "loading": "Loading the app",
+      "error": "Error loading the app"
     },
     "navigation": {
-        "main": "Home",
-        "appeals": "Appeals",
-        "news": "News",
-        "contact": "Contact",
-        "tenants": "Tenants"
+      "main": "Home",
+      "appeals": "Requests",
+      "news": "News",
+      "contact": "Contacts",
+      "rent": "Rental"
     },
     "home": {
-        "title": "Home"
+      "title": "Home",
+      "contact": "Contacts"
     },
     "addressSelector": {
-        "title": "Select address",
-        "OWNER": "Owner",
-        "TENANT": "Tenant",
-        "error": "Error getting addresses"
+      "title": "Select an address",
+      "OWNER": "Owner",
+      "TENANT": "Tenant",
+      "error": "Error loading addresses"
     },
     "news": {
-        "title": "News",
-        "description": "Here you can find all the news of the house",
-        "searchPlaceholder": "Search news",
-        "noNewsFound": "No news found",
-        "noNewsFoundDescription": "Try changing the search parameters",
-        "loadMore": "Load more",
-        "readMore": "Read more",
-        "titleNews": "News",
-        "error": "Error getting news"
+      "title": "News",
+      "description": "Here you can find all building news",
+      "searchPlaceholder": "Search news",
+      "noNewsFound": "No news found",
+      "noNewsFoundDescription": "Try changing your search criteria",
+      "loadMore": "Load more",
+      "readMore": "Read more",
+      "titleNews": "News",
+      "error": "Error loading news"
     },
     "main": {
-        "fast_action": {
-            "title": "Fast action",
-            "reportProblem": "Report problem",
-            "contactMC": "Contact MC"
-        },
-        "news": {
-            "title": "Home news",
-            "viewAll": "All news"
-        }
+      "fast_action": {
+        "title": "Quick actions",
+        "reportProblem": "Report a problem",
+        "contactMC": "Contact management company"
+      },
+      "news": {
+        "title": "Building news",
+        "viewAll": "View all news"
+      }
     },
     "contact": {
-        "title": "Contact",
-        "description": "Here you can find all the contacts of the house",
-        "call": "Call",
-        "noContactsFound": "No contacts found",
-        "error": "Error fetching contacts"
+      "title": "Contacts",
+      "description": "Here you can find all building contacts",
+      "call": "Call",
+      "noContactsFound": "No contacts found",
+      "error": "Error loading contacts"
     },
     "rent": {
-        "title": "Rent",
-        "description": "Manage the rental of the apartment and the conditions of residence",
-        "error": "Error fetching leases",
-        "empty": "Currently the apartment is not rented",
-        "emptyDescription": "Bring a tenant, if you start renting the apartment",
-        "rentAdd": "Invite a tenant",
-        "price": "Rent price",
-        "pricePlaceholder": "Specify the rental price",
-        "paymentDate": "Payment month number",
-        "paymentDatePlaceholder": "Specify the payment month number",
-        "counterDate": "Counter reading month number",
-        "counterDatePlaceholder": "Specify the counter reading month number",
-        "endsDate": "Ends date",
-        "endsDatePlaceholder": "Specify the ends date",
+      "title": "Rental",
+      "description": "Manage your apartment rental and tenancy terms",
+      "error": "Error loading rental information",
+      "empty": "The apartment is not currently rented out",
+      "emptyDescription": "Add a tenant if you start renting out the apartment",
+      "rentAdd": "Invite tenant",
+      "pastLeases": "Tenant history",
+      "fields": {
+        "price": "Rent",
+        "pricePlaceholder": "Enter the rent amount",
+        "paymentDate": "Monthly payment due date",
+        "paymentDatePlaceholder": "Enter the day of the month",
+        "counterDate": "Meter reading submission date",
+        "counterDatePlaceholder": "Enter the day of the month for meter readings",
+        "endsDate": "Lease end date",
+        "endsDatePlaceholder": "Enter the lease end date",
         "optional": "optional",
-        "conditionsRent": "Conditions of rent",
-        "conditionsRentPlaceholder": "Specify the conditions of rent",
-        "createInvite": "Create invite",
-        "errorCreateInvite": "All fields must be filled",
-        "createdInvite": "Invite created",
-        "createdInviteDescription": "Send it to the tenant through MAX. After accepting the invitation, he will appear in the list",
+        "conditionsRent": "Rental terms",
+        "conditionsRentPlaceholder": "Enter rental terms",
+        "createInvite": "Create invitation",
+        "errorCreateInvite": "Please fill in all required fields"
+      },
+      "share": {
+        "createdInvite": "Invitation created",
+        "createdInviteDescription": "Send it to the tenant via MAX. Once they accept the invitation, they will appear in the list",
         "createdInviteLink": "Link created",
         "copy": "Link copied",
-        "copyDescription": "Send it to the tenant through MAX. After accepting the invitation, he will appear in the list",
-        "copyLink": "Copy",
-        "sendInviteMax": "Send to MAX",
-        "notAllowed": {
-            "expectationAccept": "Expectation of acceptance",
-            "expectationAcceptDescription": "After accepting the invitation, he will appear in the list",
-            "month": "month",
-            "payment": "Payment to",
-            "counter": "Counter reading to",
-            "cancelSuccess": "Invitation cancelled",
-            "cancelError": "Error cancelling invitation",
-            "sendInviteMax": "Send to MAX",
-            "cancel": "Cancel invitation"
-        }
+        "copyDescription": "Send it to the tenant via MAX. Once they accept the invitation, they will appear in the list",
+        "copyLink": "Copy link",
+        "sendInviteMax": "Send via MAX"
+      },
+      "notAllowed": {
+        "expectationAccept": "Awaiting acceptance",
+        "expectationAcceptDescription": "Once the tenant accepts the invitation, they will appear in the list",
+        "month": "month",
+        "payment": "Payment due by",
+        "counter": "Meter readings due by",
+        "cancelSuccess": "Invitation canceled",
+        "cancelError": "Error canceling invitation",
+        "sendInviteMax": "Send via MAX",
+        "cancel": "Cancel invitation"
+      },
+      "allowed": {
+        "tenant": "Tenant",
+        "month": "month",
+        "payment": "Payment due by",
+        "counter": "Meter readings due by",
+        "writeInMax": "Message in MAX",
+        "endLease": "End lease",
+        "conditionsRent": "Rental terms",
+        "additionalСonditions": "Additional terms"
+      }
     },
     "tenant": {
-        "title": "You are invited to the apartment",
-        "address": "Apartment address",
-        "price": "Rent price",
-        "payment": "Payment to",
-        "counter": "Counter reading to",
-        "month": "month",
-        "additionalСonditions": "Additional conditions",
-        "accept": "Accept",
-        "reject": "Reject",
-        "errorAccept": "Error accepting invitation",
-        "successAccept": "Invitation accepted"
+      "title": "You've been invited to an apartment",
+      "address": "Apartment address",
+      "price": "Rent",
+      "payment": "Payment due by",
+      "counter": "Meter readings due by",
+      "month": "month",
+      "additionalСonditions": "Additional terms",
+      "accept": "Accept",
+      "reject": "Decline",
+      "errorAccept": "Error accepting invitation",
+      "successAccept": "Invitation accepted",
+      "titleMain": "Apartment information"
+    },
+    "appeals": {
+      "title": "Requests",
+      "description": "Here you can find all your requests",
+      "searchPlaceholder": "Search requests",
+      "noAppealsFound": "No requests found",
+      "noAppealsFoundDescription": "Try changing your search criteria",
+      "titleAppeal": "Request",
+      "error": "Error loading requests",
+      "status": {
+        "all": "All",
+        "new": "New",
+        "processing": "In progress",
+        "completed": "Completed"
+      },
+      "create": {
+        "titleAppeal": "Create request",
+        "createAppeal": "Create request",
+        "step": "Step {step} of 2",
+        "topic": {
+          "title": "Select a request category",
+          "technical": "Technical issues",
+          "technicalDescription": "For example: elevator, lighting, or plumbing issues",
+          "billing": "Billing and payments",
+          "billingDescription": "For example: incorrect amount or missing bill",
+          "cleaning": "Cleaning and maintenance",
+          "cleaningDescription": "For example: the entrance or courtyard is not being cleaned",
+          "neighborsNoise": "Neighbors and noise",
+          "neighborsNoiseDescription": "For example: loud music or noise at night",
+          "security": "Security",
+          "securityDescription": "For example: broken intercom or a door that won't lock",
+          "documents": "Documents and certificates",
+          "documentsDescription": "For example: you need a certificate or a copy of a document",
+          "other": "Other",
+          "otherDescription": "For example: your issue doesn't fit any of the other categories"
+        },
+        "description": {
+          "title": "Request title",
+          "titlePlaceholder": "Enter a request title",
+          "description": "Request description",
+          "descriptionPlaceholder": "Describe your request",
+          "createAppeal": "Create request",
+          "back": "Back",
+          "errorCreateAppeal": "Please fill in all fields",
+          "success": "Request created",
+          "error": "Error creating request"
+        },
+        "success": {
+          "success": "Request created successfully",
+          "successDescription": "We've sent your request to the management company. You'll receive a notification when they respond.",
+          "back": "Back"
+        }
+      },
+      "card": {
+        "titleAppeal": "Request",
+        "description": "Description",
+        "waitingForResponse": "Awaiting response",
+        "lastAnswer": "Latest response",
+        "waitingForResponseDescription": "We've sent your request to the management company. You'll receive a notification when they respond.",
+        "status": {
+          "CREATED": "New",
+          "IN_PROGRESS": "In progress",
+          "RESOLVED": "Completed"
+        },
+        "topic": {
+          "TECHNICAL": "Technical issues",
+          "BILLING": "Billing and payments",
+          "CLEANING": "Cleaning and maintenance",
+          "NEIGHBORS_NOISE": "Neighbors and noise",
+          "SECURITY": "Security",
+          "DOCUMENTS": "Documents and certificates",
+          "OTHER": "Other"
+        }
+      }
     }
-}   
+  }
