@@ -12,7 +12,7 @@ services:
     env_file:
       - .env
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/domov
+      DATABASE_URL: ${DATABASE_URL}
       MAX_BOT_URL: ${MAX_BOT_URL}
       MAX_BOT_TOKEN: ${MAX_BOT_TOKEN}
     depends_on:
