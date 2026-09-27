@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import NewsCatalogEmpty from "./NewsCatalogEmpty/NewsCatalogEmpty";
 import NewsCatalogLoading from "./NewsCatalogLoading/NewsCatalogLoading";
 import NewsCatalogCard from "./NewsCatalogCard/NewsCatalogCard";
-import { Button } from "@maxhub/max-ui";
+import { Button } from "@/shared/ui/components/button";
 import React from "react";
 import { useToast } from "@/shared/ui/components/toast";
 
@@ -64,7 +64,7 @@ export default function NewsPage() {
                 {loading && (<NewsCatalogLoading />)}
                 {news.length === 0 && !loading && <NewsCatalogEmpty />}
                 {news.length > 0 && !loading && page < maxPage && (
-                    <Button size="small" variant="secondary" onClick={() => setPage(page + 1)}>
+                    <Button size="default" variant="secondary" onClick={() => setPage(page + 1)}>
                         {t('loadMore')}
                     </Button>
                 )}

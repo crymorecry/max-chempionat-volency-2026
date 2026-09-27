@@ -187,7 +187,7 @@ const Popover: React.FC<PopoverProps> = ({
                 <div
                     ref={contentRef}
                     className={cn(
-                        'absolute z-50',
+                        'absolute z-50 flex w-full',
                         'bg-popover-background border border-popover-border rounded-lg shadow-lg',
                         'overflow-hidden',
                         getPositionClasses()

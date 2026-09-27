@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Text } from "@/shared/ui/components/text";
 import { CheckIcon, CopyIcon } from "lucide-react";
 import { useToast } from "@/shared/ui/components/toast";
+import { Button } from "@/shared/ui/components/button";
 
 export default function RentShare({ url }: { url: string }) {
     const t = useTranslations('rent.share');
@@ -35,19 +36,13 @@ export default function RentShare({ url }: { url: string }) {
                 <CopyIcon className="min-w-5 min-h-5 text-primary" onClick={handleCopy} />
             </div>
             <div className="flex flex-col gap-y-2 w-full">
-                <button
-                    className="w-full bg-primary rounded-xl focus:bg-primary/80 transition-all h-10 flex items-center justify-center"
-                    onClick={handleSendInviteMax}
-                >
-                    <Text size="base" variant="primary" className="text-volen-50">{t('sendInviteMax')}</Text>
-                </button>
-                <button
-                    className="gap-x-2 w-full dark:bg-volen-700 bg-volen-100 rounded-xl focus:bg-volen-400/80 transition-all h-10 flex items-center justify-center"
-                    onClick={handleCopy}
-                >
-                    <CopyIcon className="w-4 h-4 text-text-primary" />
-                    <Text size="base" variant="primary">{t('copyLink')}</Text>
-                </button>
+                <Button size="default" variant="primary" className="w-full" onClick={handleSendInviteMax}>
+                    {t('sendInviteMax')}
+                </Button>
+                <Button size="default" variant="secondary" className="w-full" onClick={handleCopy}>
+                    <CopyIcon className="w-4 h-4" />
+                    {t('copyLink')}
+                </Button>
             </div>
         </div>
     )

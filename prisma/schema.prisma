@@ -18,6 +18,16 @@ enum RequestStatus {
   RESOLVED
 }
 
+enum RequestTopic {
+  TECHNICAL
+  BILLING
+  CLEANING
+  NEIGHBORS_NOISE
+  SECURITY
+  DOCUMENTS
+  OTHER
+}
+
 model User {
   id        String @id @default(uuid())
   maxUserId String @unique
@@ -110,6 +120,7 @@ model Request {
   apartmentId String
   userId      String
 
+  topic       RequestTopic
   title       String
   description String?
 
@@ -118,8 +129,24 @@ model Request {
   apartment Apartment @relation(fields: [apartmentId], references: [id])
   user      User      @relation(fields: [userId], references: [id])
 
+  statusHistory RequestStatusHistory[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model RequestStatusHistory {
+  id Int @id @default(autoincrement())
+
+  requestId Int
+  status    RequestStatus
+  comment String?
+
+  request Request @relation(fields: [requestId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+
+  @@index([requestId])
 }
 
 model Contact {

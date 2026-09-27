@@ -1,7 +1,5 @@
 'use client'
-
-import { useState } from "react"
-import { Button } from "@maxhub/max-ui"
+import { Button } from "@/shared/ui/components/button";
 
 export default function GetStatusBot() {
     const getData = async () => {
@@ -12,7 +10,7 @@ export default function GetStatusBot() {
     return (
         <div className="flex w-full justify-between items-center">
             <h1>Get Status Bot</h1>
-            <Button size="small" onClick={getData}>Get Data</Button>
+            <Button size="default" variant="primary" onClick={getData}>Get Data</Button>
         </div>
     )
 }

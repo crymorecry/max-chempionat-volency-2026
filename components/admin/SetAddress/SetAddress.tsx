@@ -1,5 +1,5 @@
 'use client'
-import { Button, Input } from "@maxhub/max-ui"
+import { Button } from "@/shared/ui/components/button";
 import { Form } from "lucide-react"
 import { useState } from "react"
 
@@ -21,7 +21,7 @@ export default function SetAddress() {
             <form onSubmit={handleSubmit} className="flex flex-col gap-2">
                 <input type="text" className="w-full border border-gray-300 rounded-md p-2" placeholder="Address" value={address} onChange={(e) => setAddress(e.target.value)} />
                 <input type="text" className="w-full border border-gray-300 rounded-md p-2" placeholder="Max User ID" value={maxUserId} onChange={(e) => setMaxUserId(e.target.value)} />
-                <Button size="small" type="submit">Set Address</Button>
+                <Button size="default" variant="primary" type="submit">Set Address</Button>
             </form>
         </div>
     )

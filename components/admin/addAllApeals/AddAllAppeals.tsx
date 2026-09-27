@@ -1,9 +1,9 @@
 'use client'
 
 import { Button } from "@/shared/ui/components/button";
-export default function AddAllContact() {
-    const addContact = async () => {
-        const response = await fetch('/api/admin/addAllContact', {
+export default function AddAllAppeals() {
+    const addAppeals = async () => {
+        const response = await fetch('/api/admin/addAllAppeals', {
             method: 'POST',
         })
         const data = await response.json()
@@ -11,8 +11,8 @@ export default function AddAllContact() {
     }
     return (
         <div className="flex w-full justify-between items-center">
-            <h1>Add All Contact</h1>
-            <Button size="default" variant="primary" onClick={addContact}>Add All Contact</Button>
+            <h1>Add All Appeals</h1>
+            <Button size="default" variant="primary" onClick={addAppeals}>Add All Appeals</Button>
         </div>
     )
 }

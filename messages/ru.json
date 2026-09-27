@@ -22,7 +22,8 @@
         "rent": "Аренда"
     },
     "home": {
-        "title": "Главная"
+        "title": "Главная",
+        "contact": "Контакты"
     },
     "addressSelector": {
         "title": "Выберите адрес",
@@ -126,5 +127,79 @@
         "errorAccept": "Ошибка при принятии приглашения",
         "successAccept": "Приглашение принято",
         "titleMain": "Информация о квартире"
+    },
+    "appeals": {
+        "title": "Обращения",
+        "description": "Здесь вы можете найти все обращения",
+        "searchPlaceholder": "Поиск обращений",
+        "noAppealsFound": "Обращений не найдено",
+        "noAppealsFoundDescription": "Попробуйте изменить параметры поиска",
+        "titleAppeal": "Обращение",
+        "error": "Ошибка при получении обращений",
+        "status": {
+            "all": "Все",
+            "new": "Новое",
+            "processing": "В обработке",
+            "completed": "Завершено"
+        },
+        "create": {
+            "titleAppeal": "Создание",
+            "createAppeal": "Создать обращение",
+            "step": "Шаг {step} из 2",
+            "topic": {
+                "title": "Выберите тему обращения",
+                "technical": "Технические проблемы",
+                "technicalDescription": "Например: не работает лифт, свет или сантехника",
+                "billing": "Начисления и оплата",
+                "billingDescription": "Например: неверная сумма или не пришёл счёт",
+                "cleaning": "Уборка и чистота",
+                "cleaningDescription": "Например: не убирают подъезд или двор",
+                "neighborsNoise": "Соседи и шум",
+                "neighborsNoiseDescription": "Например: громкая музыка или шум в ночное время",
+                "security": "Безопасность",
+                "securityDescription": "Например: сломан домофон или не закрывается дверь",
+                "documents": "Документы и справки",
+                "documentsDescription": "Например: нужна справка или копия документа",
+                "other": "Другое",
+                "otherDescription": "Например: вопрос не подходит под другие категории"
+            },
+            "description": {
+                "title": "Заголовок обращения",
+                "titlePlaceholder": "Укажите заголовок обращения",
+                "description": "Описание обращения",
+                "descriptionPlaceholder": "Укажите описание обращения",
+                "createAppeal": "Создать обращение",
+                "back": "Назад",
+                "errorCreateAppeal": "Заполните все поля",
+                "success": "Обращение создано",
+                "error": "Ошибка при создании обращения"
+            },
+            "success": {
+                "success": "Обращение успешно создано",
+                "successDescription": "Мы передали ваше обращение в управляющую компанию. Вы получите уведомление, когда будет ответ.",
+                "back": "Назад"
+            }
+        },
+        "card": {
+            "titleAppeal": "Обращение",
+            "description": "Описание",
+            "waitingForResponse": "Ожидание ответа",
+            "lastAnswer": "Последний ответ",
+            "waitingForResponseDescription": "Мы передали ваше обращение в управляющую компанию. Вы получите уведомление, когда будет ответ.",
+            "status": {
+                "CREATED": "Новое",
+                "IN_PROGRESS": "В обработке",
+                "RESOLVED": "Завершено"
+            },
+            "topic": {
+                "TECHNICAL": "Технические проблемы",
+                "BILLING": "Начисления и оплата",
+                "CLEANING": "Уборка и чистота",
+                "NEIGHBORS_NOISE": "Соседи и шум",
+                "SECURITY": "Безопасность",
+                "DOCUMENTS": "Документы и справки",
+                "OTHER": "Другое"
+            }
+        }
     }
 }

@@ -2,7 +2,7 @@ import { VariantProps, cva } from "class-variance-authority"
 import { cn } from "../utils/cn"
 import React from "react"
 
-const buttonVariants = cva('inline-flex items-center justify-center rounded-lg font-medium transition-all', {
+const buttonVariants = cva('inline-flex items-center justify-center rounded-lg font-medium transition-all gap-x-2', {
     variants: {
         size: {
             sm: 'h-9 rounded-xl gap-1.5 px-3 text-sm',
@@ -16,11 +16,11 @@ const buttonVariants = cva('inline-flex items-center justify-center rounded-lg f
             full: 'w-full',
         },
         variant: {
-            primary: 'hover:!bg-[var(--color-button-background-primary-hover)] disabled:hover:!bg-[var(--color-button-background-primary)]',
-            secondary: 'hover:!bg-[var(--color-button-background-secondary-hover)] disabled:hover:!bg-[var(--color-button-background-secondary)]',
-            ghost: 'hover:!bg-volen-100 disabled:hover:!bg-volen-100 dark:hover:!bg-volen-700 dark:disabled:hover:!bg-volen-700',
-            danger: 'hover:!bg-[var(--color-button-background-destructive-hover)] disabled:hover:!bg-[var(--color-button-background-destructive)]',
-            outline: 'hover:!bg-volen-100 disabled:hover:!bg-volen-100 dark:hover:!bg-volen-700 dark:disabled:hover:!bg-volen-700 border border-card-border'
+            primary: 'hover:!bg-[var(--color-button-background-primary-hover)] disabled:hover:!bg-[var(--color-button-background-primary)] focus:!bg-[var(--color-button-background-primary-hover)]',
+            secondary: 'hover:!bg-[var(--color-button-background-secondary-hover)] disabled:hover:!bg-[var(--color-button-background-secondary)] focus:!bg-[var(--color-button-background-secondary-hover)]',
+            ghost: 'hover:!bg-volen-100 disabled:hover:!bg-volen-100 dark:hover:!bg-volen-700 dark:disabled:hover:!bg-volen-700 focus:!bg-volen-100 dark:focus:!bg-volen-700',
+            danger: 'hover:!bg-[var(--color-button-background-destructive-hover)] disabled:hover:!bg-[var(--color-button-background-destructive)] focus:!bg-[var(--color-button-background-destructive-hover)]',
+            outline: 'hover:!bg-volen-100 disabled:hover:!bg-volen-100 dark:hover:!bg-volen-700 dark:disabled:hover:!bg-volen-700 border border-card-border focus:!bg-volen-100 dark:focus:!bg-volen-700'
         },
     },
     defaultVariants: {

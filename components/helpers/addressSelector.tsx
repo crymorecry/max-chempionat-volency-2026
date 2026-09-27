@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Text } from '@/shared/ui/components/text'
 import { ChevronRightIcon, MapPinIcon } from '@heroicons/react/24/outline'
-import { Button } from '@maxhub/max-ui'
+import { Button } from '@/shared/ui/components/button'
 import Sheet from '@/shared/ui/components/sheet'
 import { useTranslations } from 'next-intl';
 import { useToast } from '@/shared/ui/components/toast';
@@ -66,7 +66,7 @@ export default function AddressSelector() {
 
     return (
         <>
-            <Button variant="ghost" size="small" className=" flex !border-t !border-volen-200 dark:!border-volen-700 w-full !rounded-none !p-0" onClick={() => setIsOpen(true)}>
+            <Button variant="ghost" size="default" className=" flex !border-t !border-volen-200 dark:!border-volen-700 w-full !rounded-none !p-0" onClick={() => setIsOpen(true)}>
                 <div className="w-screen py-2">
                     <div className="w-11/12 mx-auto flex items-center justify-between">
                         <div className="flex items-center gap-x-2 w-full">
@@ -81,7 +81,7 @@ export default function AddressSelector() {
             <Sheet isOpen={isOpen} onClose={() => setIsOpen(false)} title={t('title')} showCloseButton={showCloseButton} enableSwipeToClose={showCloseButton}>
                 <div className="flex flex-col">
                     {addresses.map((address, index) => (
-                        <Button variant="ghost" size="small" className="flex !border-b !border-volen-200 dark:!border-volen-700 !p-0 !rounded-none !py-2 !h-full" key={index} onClick={() => handleSelectAddress(address)}>
+                        <Button variant="ghost" size="default" className="flex !border-b !border-volen-200 dark:!border-volen-700 !p-0 !rounded-none !py-2 !h-full" key={index} onClick={() => handleSelectAddress(address)}>
                             <div className='flex !w-screen'>
                                 <div className='flex justify-between w-11/12 mx-auto items-center'>
                                     <div className='flex gap-x-2 items-center'>

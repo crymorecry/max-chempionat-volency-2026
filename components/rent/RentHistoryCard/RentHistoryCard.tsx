@@ -5,13 +5,14 @@ import { Text } from "@/shared/ui/components/text";
 import { BanknoteIcon, CalendarIcon, ChevronRightIcon, ScrollTextIcon } from "lucide-react";
 import Sheet from "@/shared/ui/components/sheet";
 import { useState } from "react";
+import { Button } from "@/shared/ui/components/button";
 
 export default function RentHistoryCard({ lease }: { lease: any }) {
     const t = useTranslations('rent.allowed');
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <button className="w-full flex justify-between items-center" onClick={() => setIsOpen(true)}>
+            <Button size="default" variant="ghost" className="w-full h-full" onClick={() => setIsOpen(true)}>
                 <div className="flex gap-x-2 h-16">
                     {lease.tenant?.photo != "" ? (
                         <img src={lease.tenant?.photo || ''} alt="Photo" width={100} height={100} className="rounded-full w-16 h-16" />
@@ -26,7 +27,7 @@ export default function RentHistoryCard({ lease }: { lease: any }) {
                     </div>
                 </div>
                 <ChevronRightIcon className="w-5 h-5" />
-            </button>
+            </Button>
             <Sheet
                 isOpen={isOpen}
                 onClose={() => setIsOpen(false)}

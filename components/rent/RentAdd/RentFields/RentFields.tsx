@@ -2,8 +2,8 @@ import { useToast } from "@/shared/ui/components/toast";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Text } from "@/shared/ui/components/text";
-import DateInput from "@/shared/ui/components/date-input";
 import { PlusIcon } from "lucide-react";
+import { Button } from "@/shared/ui/components/button";
 
 export default function RentFields({ setStep, setUrl }: { setStep: (step: number) => void, setUrl: (url: string) => void }) {
     const t = useTranslations('rent.fields');
@@ -113,15 +113,14 @@ export default function RentFields({ setStep, setUrl }: { setStep: (step: number
                 />
             </div>
 
-            <button
-                className="w-full bg-primary rounded-xl focus:bg-primary/80 transition-all h-10 flex items-center justify-center"
+            <Button
+                size="default"
+                variant="primary"
                 onClick={() => createInvite()}
             >
-                <div className="flex gap-x-2 items-center">
-                    <PlusIcon className=" w-4 h-4 text-volen-50" />
-                    <Text size="base" variant="primary" className="text-volen-50">{t('createInvite')}</Text>
-                </div>
-            </button>
+                <PlusIcon className=" w-4 h-4" />
+                {t('createInvite')}
+            </Button>
         </>
     )
 }

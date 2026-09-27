@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from "@maxhub/max-ui"
+import { Button } from "@/shared/ui/components/button";
 
 export default function DeleteAllAddress() {
     const deleteAllAddress = async () => {
@@ -14,7 +14,7 @@ export default function DeleteAllAddress() {
         <>
             <div className="flex w-full justify-between items-center">
                 <h1>Delete All Address</h1>
-                <Button size="small" onClick={deleteAllAddress}>Delete All Address</Button>
+                <Button size="default" variant="primary" onClick={deleteAllAddress}>Delete All Address</Button>
             </div>
         </>
     )

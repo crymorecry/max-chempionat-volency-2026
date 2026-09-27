@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Text } from "@/shared/ui/components/text";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/shared/ui/components/toast";
+import { Button } from "@/shared/ui/components/button";
 
 export default function TenantAccept({ lease }: { lease: any }) {
     const [isOpen, setIsOpen] = useState(true)
@@ -67,18 +68,8 @@ export default function TenantAccept({ lease }: { lease: any }) {
                     <Text size="base" variant="primary" className="text-left whitespace-pre-line">{lease.conditionsRent}</Text>
                 </div>
                 <div className="flex flex-col gap-y-2">
-                    <button
-                        className="w-full bg-primary rounded-xl focus:bg-primary/80 transition-all h-10 flex items-center justify-center"
-                        onClick={handleAccept}
-                    >
-                        <Text size="base" variant="primary" className="text-volen-50">{t('accept')}</Text>
-                    </button>
-                    <button
-                        className="w-full bg-destructive rounded-xl focus:bg-destructive/80 transition-all h-10 flex items-center justify-center"
-                        onClick={handleReject}
-                    >
-                        <Text size="base" variant="primary" className="text-volen-50">{t('reject')}</Text>
-                    </button>
+                    <Button size="default" variant="primary" className="w-full" onClick={handleAccept}>{t('accept')}</Button>
+                    <Button size="default" variant="danger" className="w-full" onClick={handleReject}>{t('reject')}</Button>
                 </div>
             </div>
         </Drawer>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from "@maxhub/max-ui"
+import { Button } from "@/shared/ui/components/button";
 
 export default function AddAllNews() {
     const addNews = async () => {
@@ -13,7 +13,7 @@ export default function AddAllNews() {
     return (
         <div className="flex w-full justify-between items-center">
             <h1>Add All News</h1>
-            <Button size="small" onClick={addNews}>Add All News</Button>
+            <Button size="default" variant="primary" onClick={addNews}>Add All News</Button>
         </div>
     )
 }

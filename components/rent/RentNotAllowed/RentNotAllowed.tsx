@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Text } from "@/shared/ui/components/text";
 import { BanknoteIcon, CalendarIcon, CopyIcon, ScrollTextIcon, TimerIcon } from "lucide-react";
 import { useToast } from "@/shared/ui/components/toast";
+import { Button } from "@/shared/ui/components/button";
 
 export default function RentNotAllowed({ getLeases, lease }: { getLeases: () => void, lease: any }) {
     const t = useTranslations('rent.notAllowed');
@@ -58,18 +59,12 @@ export default function RentNotAllowed({ getLeases, lease }: { getLeases: () => 
                 </div>
             </div>
             <div className="flex flex-col gap-y-2">
-                <button
-                    className="w-full bg-primary rounded-xl focus:bg-primary/80 transition-all h-10 flex items-center justify-center"
-                    onClick={handleSendInviteMax}
-                >
-                    <Text size="base" variant="primary" className="text-volen-50">{t('sendInviteMax')}</Text>
-                </button>
-                <button
-                    className="gap-x-2 w-full bg-destructive dark:bg-destructive/20 rounded-xl focus:bg-destructive/20 transition-all h-10 flex items-center justify-center"
-                    onClick={handleCancel}
-                >
-                    <Text size="base" variant="primary" className="text-volen-50">{t('cancel')}</Text>
-                </button>
+                <Button size="default" variant="primary" className="w-full" onClick={handleSendInviteMax}>
+                    {t('sendInviteMax')}
+                </Button>
+                <Button size="default" variant="danger" className="w-full" onClick={handleCancel}>
+                    {t('cancel')}
+                </Button>
             </div>
 
         </div>

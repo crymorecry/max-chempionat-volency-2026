@@ -2,6 +2,7 @@ import { Text } from "@/shared/ui/components/text";
 import { useTranslations } from "next-intl";
 import { formatDate } from "@/utils/formatDate";
 import { BanknoteIcon, CalendarIcon, ScrollTextIcon } from "lucide-react";
+import { Button } from "@/shared/ui/components/button";
 
 export default function RentAllowed({ getLeases, lease }: { getLeases: () => Promise<void>, lease: any }) {
     const t = useTranslations('rent.allowed');
@@ -51,12 +52,9 @@ export default function RentAllowed({ getLeases, lease }: { getLeases: () => Pro
                 </div>
             </div>
             <div className="flex flex-col gap-y-2">
-                <button
-                    className="w-full bg-destructive rounded-xl focus:bg-destructive/80 transition-all h-10 flex items-center justify-center"
-                    onClick={handleEndLease}
-                >
-                    <Text size="base" variant="primary" className="!font-medium text-volen-50">{t('endLease')}</Text>
-                </button>
+                <Button size="default" variant="danger" className="w-full" onClick={handleEndLease}>
+                    {t('endLease')}
+                </Button>
             </div>
         </div >
     )
