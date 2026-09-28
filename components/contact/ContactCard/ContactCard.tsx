@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function ContactCard({ contact }: { contact: any }) {
     const t = useTranslations("contact");
     return (
-        <div className="flex flex-col gap-y-4 border border-card-border rounded-xl p-4">
+        <div className="flex flex-col gap-y-4 border border-card-border rounded-xl p-4 dark:bg-card-background">
             <div className="flex flex-col">
                 <Text size="base" variant="primary">{contact.name}</Text>
                 <Text size="sm" variant="secondary">{contact.description}</Text>

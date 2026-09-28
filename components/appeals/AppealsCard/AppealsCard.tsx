@@ -12,13 +12,16 @@ export default function AppealsCard({ appeal }: { appeal: any }) {
     const [isOpen, setIsOpen] = useState(false);
     return (
         <>
-            <Button variant="outline" onClick={() => setIsOpen(true)} className="flex w-full items-center h-full text-left rounded-xl px-4 py-2 justify-between">
-                <div className="flex flex-col gap-y-1">
-                    <div className="flex items-center gap-x-2">
-                        <Text size="base" className="font-medium">{appeal.title}</Text>
-                        <AppealsStatus status={appeal.status} />
+            <Button variant="outline" onClick={() => setIsOpen(true)} className="flex w-full items-center h-full text-left rounded-xl px-4 py-2 justify-between dark:bg-card-background">
+                <div className="flex flex-col gap-y-2 min-w-0 w-full">
+                    <AppealsStatus status={appeal.status} />
+                    <div className="flex flex-col gap-y-1 min-w-0 w-full">
+                        <div className="flex flex-col min-w-0 w-full">
+                            <Text size="base" className="font-medium truncate">{appeal.title}sfhgfhgfhgfhgfhfgh</Text>
+                            <Text size="xs" variant="secondary">{formatDate(appeal.createdAt)}</Text>
+                        </div>
+                        <Text size="sm" variant="secondary">{t(`topic.${appeal.topic}`)}</Text>
                     </div>
-                    <Text size="sm" variant="secondary">{t(`topic.${appeal.topic}`)}</Text>
                 </div>
                 <ChevronRightIcon className="w-4 h-4" />
             </Button>

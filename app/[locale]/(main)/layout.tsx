@@ -7,7 +7,13 @@ import Navigation from "@/components/layout/navigation/navigation";
 import ScreenDeviceProvider from "@/context/ScreenDeviceProvider";
 import { ToastProvider } from "@/shared/ui/components/toast";
 import Script from 'next/script'
+import type { Viewport } from 'next';
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+};
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html suppressHydrationWarning>
