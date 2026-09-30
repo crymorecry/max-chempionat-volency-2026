@@ -17,7 +17,7 @@ export default function AppealsCard({ appeal }: { appeal: any }) {
                     <AppealsStatus status={appeal.status} />
                     <div className="flex flex-col gap-y-1 min-w-0 w-full">
                         <div className="flex flex-col min-w-0 w-full">
-                            <Text size="base" className="font-medium truncate">{appeal.title}sfhgfhgfhgfhgfhfgh</Text>
+                            <Text size="base" className="font-medium truncate">{appeal.title}</Text>
                             <Text size="xs" variant="secondary">{formatDate(appeal.createdAt)}</Text>
                         </div>
                         <Text size="sm" variant="secondary">{t(`topic.${appeal.topic}`)}</Text>
